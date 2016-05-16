@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="138.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.snake.controller.MenuController">
+   <children>
+      <Label layoutX="136.0" layoutY="6.0" text="Snake" />
+      <Button fx:id="buttonStart" layoutX="115.0" layoutY="43.0" mnemonicParsing="false" onAction="#Start" text="Start game" />
+      <Button fx:id="buttonHighScores" layoutX="115.0" layoutY="75.0" mnemonicParsing="false" onAction="#HighScores" text="Highscores" />
+      <Button fx:id="buttonExit" layoutX="135.0" layoutY="107.0" mnemonicParsing="false" onAction="#Exit" text="Exit" />
+   </children>
+</AnchorPane>
