@@ -23,7 +23,6 @@ package hu.unideb.inf.snake.controller;
  */
 import hu.unideb.inf.snake.model.XMLManager;
 import hu.unideb.inf.snake.model.XMLManagerDao;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -79,9 +78,9 @@ public class HighScoresController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            Path p = Paths.get(System.getProperty("user.home"), "Documents", "Snake", "players.xml");
+            Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
             if (!p.toFile().isFile()) {
-                Path dir = Paths.get(System.getProperty("user.home"), "Documents", "Snake");
+                Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
                 dir.toFile().mkdirs();
                 Files.setAttribute(dir, "dos:hidden", true);
                 manager.createPlayersXML(p);

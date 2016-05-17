@@ -114,7 +114,7 @@ public class SnakeEngine {
     }
 
     /**
-     * Adott pozíciót visszahelyezi a pálya ellentéte oldalára.
+     * Adott pozíciót visszahelyezi a pálya ellentétes oldalára.
      *
      * @param head egy pályán kívúlre eső pozíció
      * @return egy a pályára visszahelyezett pozíció

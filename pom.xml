@@ -13,6 +13,9 @@
         <developer>
             <name>Kokas István</name>
             <email>pisti0322@gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
         </developer>
     </developers>
     <inceptionYear>2016</inceptionYear>

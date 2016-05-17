@@ -82,12 +82,27 @@ public class SnakeEngineTest {
         Position nexthead = engine.getNextPosition(new Position(5, 5), Direction.RIGHT);
         assertEquals(6, nexthead.getX());
         assertEquals(5, nexthead.getY());
+        nexthead = engine.getNextPosition(new Position(5, 5), Direction.UP);
+        assertEquals(5, nexthead.getX());
+        assertEquals(4, nexthead.getY());
+        nexthead = engine.getNextPosition(new Position(5, 5), Direction.DOWN);
+        assertEquals(5, nexthead.getX());
+        assertEquals(6, nexthead.getY());
+        nexthead = engine.getNextPosition(new Position(5, 5), Direction.LEFT);
+        assertEquals(4, nexthead.getX());
+        assertEquals(5, nexthead.getY());
 
     }
 
     @Test
     public void testIsOutOfMap() {
-        Position teszt = new Position(30, 30);
+        Position teszt = new Position(30, 29);
+        assertEquals(true, engine.isOutOfMap(teszt));
+        teszt = new Position(29, 30);
+        assertEquals(true, engine.isOutOfMap(teszt));
+        teszt = new Position(-1, 29);
+        assertEquals(true, engine.isOutOfMap(teszt));
+        teszt = new Position(29, -1);
         assertEquals(true, engine.isOutOfMap(teszt));
 
     }
@@ -97,6 +112,18 @@ public class SnakeEngineTest {
         Position teszt = new Position(30, 29);
         Position newpos = engine.backToMap(teszt);
         assertEquals(0, newpos.getX());
+        assertEquals(29, newpos.getY());
+        teszt = new Position(29, 30);
+        newpos = engine.backToMap(teszt);
+        assertEquals(29, newpos.getX());
+        assertEquals(0, newpos.getY());
+        teszt = new Position(-1, 4);
+        newpos = engine.backToMap(teszt);
+        assertEquals(29, newpos.getX());
+        assertEquals(4, newpos.getY());
+        teszt = new Position(4, -1);
+        newpos = engine.backToMap(teszt);
+        assertEquals(4, newpos.getX());
         assertEquals(29, newpos.getY());
 
     }

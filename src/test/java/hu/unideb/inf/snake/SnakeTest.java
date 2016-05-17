@@ -33,7 +33,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Pisti
+ * @author Kokas István
  */
 public class SnakeTest {
 

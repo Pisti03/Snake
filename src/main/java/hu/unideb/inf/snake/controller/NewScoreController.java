@@ -63,9 +63,9 @@ public class NewScoreController implements Initializable {
 
     @FXML
     private void Yes(ActionEvent event) {
-        Path p = Paths.get(System.getProperty("user.home"), "Documents", "Snake", "players.xml");
+        Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
         if (!p.toFile().isFile()) {
-            Path dir = Paths.get(System.getProperty("user.home"), "Documents", "Snake");
+            Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
             dir.toFile().mkdirs();
             try {
                 Files.setAttribute(dir, "dos:hidden", true);

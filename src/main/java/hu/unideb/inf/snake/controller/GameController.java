@@ -88,7 +88,7 @@ public class GameController implements Initializable {
     @FXML
     private void handleButtonStart(ActionEvent event) {
         logger.info("Starting game.");
-        started=true;
+        started = true;
         if (buttonStart.getText().equals("Start") && game.getValue()) {
             engine.start();
             buttonStart.setText("Restart");
@@ -235,8 +235,7 @@ public class GameController implements Initializable {
         checkboxWall.setSelected(true);
         init();
         engine.stop();
-        speedChoice.getSelectionModel().selectedItemProperty()
-                .addListener(new ChangeListener() {
+        speedChoice.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
                     @Override
                     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                         engine.changefps(speedChoice.getSelectionModel().getSelectedItem().toString());

@@ -38,7 +38,7 @@ import org.w3c.dom.Element;
 
 /**
  *
- * @author Pisti
+ * @author Kokas István
  */
 public class XMLManagerTest {
 

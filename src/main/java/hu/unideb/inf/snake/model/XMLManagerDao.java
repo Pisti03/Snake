@@ -26,7 +26,7 @@ import java.util.List;
 import org.w3c.dom.Element;
 
 /**
- * Az XMLManager DAO osztálya a végezhető műveleteket definiálja.
+ * Az XMLManager DAO osztálya, az XML fájlon végezhető műveleteket definiálja.
  *
  * @author Kokas István
  */
