@@ -49,10 +49,9 @@ public class GameEngine {
     private boolean paused = true;
     private Snake snake;
     private SimpleBooleanProperty game;
-    private IntegerProperty score;
+    private int score;
     private Position food;
     private SnakeEngine engine;
-    private GridPane map;
     /**
      * A fal állapota, be van e kapcsolva.
      */
@@ -63,13 +62,12 @@ public class GameEngine {
         gameLoop = creategameLoop();
     }
 
-    public GameEngine(int frameRate, ArrayList<Position> list, GridPane map, SimpleBooleanProperty game, IntegerProperty score, IntegerProperty frameCount) {
+    public GameEngine(int frameRate, ArrayList<Position> list, SimpleBooleanProperty game, IntegerProperty frameCount) {
         this.frameRate = frameRate;
         gameLoop = creategameLoop();
         this.snake = new Snake(Direction.RIGHT, list);
-        this.map = map;
         this.game = game;
-        this.score = score;
+        this.score = 0;
         this.engine = new SnakeEngine();
         this.food = new Position();
         this.frameCount = frameCount;
@@ -84,7 +82,8 @@ public class GameEngine {
     public void run() {
         snake.turn();
         snake.setBody(engine.moveToNextPosition(snake.getBody(), snake.getDirection(), food, wall, game));
-        score.set(engine.countScore(snake.getBody()));
+        System.out.println("score::" + engine.countScore(snake.getBody()));
+        score=engine.countScore(snake.getBody());
         frameCount.set(frameCount.getValue() + 1);
     }
 
@@ -166,7 +165,11 @@ public class GameEngine {
     public IntegerProperty getFrameCount() {
         return frameCount;
     }
-
+    public int getScore()
+    {
+        return score;
+    }
+    
     public int getFrameRate() {
         return frameRate;
     }

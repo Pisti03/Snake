@@ -81,7 +81,6 @@ public class GameController implements Initializable {
     public static final ObservableList<String> Speeds = FXCollections.observableArrayList("SLOW", "MEDIUM", "FAST", "EXTRA");
     private GameEngine engine;
     private SimpleBooleanProperty game;
-    private IntegerProperty score;
     private IntegerProperty frameCount;
     private boolean started = false;
 
@@ -162,7 +161,7 @@ public class GameController implements Initializable {
             stage = new Stage();//uj ablak
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NewScore.fxml"));
             root = loader.load();
-            loader.<NewScoreController>getController().init(score.getValue());
+            loader.<NewScoreController>getController().init(engine.getScore());
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -173,6 +172,8 @@ public class GameController implements Initializable {
     }
 
     public void rajzol() {
+        labelScore.setText("Score: " + engine.getScore());
+        logger.info("Score: " + engine.getScore());
         gridPane.getChildren().clear();
         Circle circ = new Circle(10, Color.RED);
         gridPane.add(circ, engine.getFood().getX(), engine.getFood().getY());
@@ -188,23 +189,17 @@ public class GameController implements Initializable {
     }
 
     public void init() {
+        logger.info("Initializing game.");
         labelScore.setText("Score: " + 0);
         if (engine != null) {
             engine.stop();
         }
-        score = new SimpleIntegerProperty(0);
         game = new SimpleBooleanProperty(true);
         frameCount = new SimpleIntegerProperty(0);
         game.addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 endgame();
-            }
-        });
-        score.addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                labelScore.setText("Score: " + score.getValue());
             }
         });
 
@@ -222,7 +217,7 @@ public class GameController implements Initializable {
         list.add(seged);
         seged = new Position(8, 10);
         list.add(seged);
-        engine = new GameEngine(10, list, gridPane, game, score, frameCount);
+        engine = new GameEngine(10, list, game, frameCount);
         rajzol();
         engine.setWall(checkboxWall.isSelected());
         engine.changefps(speedChoice.getSelectionModel().getSelectedItem().toString());
