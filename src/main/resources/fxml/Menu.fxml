@@ -6,13 +6,14 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="138.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.snake.controller.MenuController">
-   <children>
-      <Label layoutX="126.0" layoutY="4.0" text="Snake" textFill="#25bc41">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font></Label>
-      <Button fx:id="buttonStart" layoutX="115.0" layoutY="41.0" mnemonicParsing="false" onAction="#Start" text="Start game" textFill="#3a13d6" />
-      <Button fx:id="buttonHighScores" layoutX="115.0" layoutY="72.0" mnemonicParsing="false" onAction="#HighScores" text="Highscores" textFill="#3a13d6" />
-      <Button fx:id="buttonExit" layoutX="134.0" layoutY="102.0" mnemonicParsing="false" onAction="#Exit" text="Exit" textFill="#3a13d6" />
-   </children>
+    <children>
+        <Label layoutX="126.0" layoutY="4.0" text="Snake" textFill="#25bc41">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="buttonStart" layoutX="115.0" layoutY="41.0" mnemonicParsing="false" onAction="#Start" text="Start game" textFill="#3a13d6" />
+        <Button fx:id="buttonHighScores" layoutX="115.0" layoutY="72.0" mnemonicParsing="false" onAction="#HighScores" text="Highscores" textFill="#3a13d6" />
+        <Button fx:id="buttonExit" layoutX="134.0" layoutY="102.0" mnemonicParsing="false" onAction="#Exit" text="Exit" textFill="#3a13d6" />
+    </children>
 </AnchorPane>

@@ -61,7 +61,7 @@ public class GameEngine {
      */
     private Snake snake;
     /**
-     * Fut e még a játék.
+     * Fut e még a játék, az értéke <code>igaz</code> ha még fut.
      */
     private SimpleBooleanProperty game;
     /**

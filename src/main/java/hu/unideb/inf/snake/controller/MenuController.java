@@ -51,7 +51,7 @@ public class MenuController implements Initializable {
     private Button buttonExit;
 
     @FXML
-    private void Start(ActionEvent event){
+    private void Start(ActionEvent event) {
         try {
             Stage stage;
             Parent root;

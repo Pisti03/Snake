@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javafx.beans.property.SimpleBooleanProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A Snake játék alapvető funkciót tartalmazó osztály.
@@ -32,6 +34,8 @@ import javafx.beans.property.SimpleBooleanProperty;
  * @author Kokas István
  */
 public class SnakeEngine {
+
+    private static Logger logger = LoggerFactory.getLogger(SnakeEngine.class);
 
     /**
      * A Snake összes celláját a kövekező lépés pozíciójára állítja. Ellenőrzi,
@@ -56,6 +60,7 @@ public class SnakeEngine {
         Position nextHead = getNextPosition(snake.get(0), direction);
         if (isOutOfMap(nextHead)) {
             nextHead = backToMap(nextHead);
+            logger.debug("nextHead= " + nextHead);
         }
         if (isInList(snake, nextHead) || (wall && isNextWall(snake.get(0), direction))) {
             game.set(false);
@@ -108,14 +113,16 @@ public class SnakeEngine {
      *
      * @param pos egy pozíció amelyet ellenőrízni szeretnénk, hogy a pályán
      * belülre esik e
-     * @return <code>igaz</code>, ha a pozíció a pályán kívűlre esik, egyébként <code>hamis</code>
+     * @return <code>igaz</code>, ha a pozíció a pályán kívűlre esik, egyébként
+     * <code>hamis</code>
      */
     public Boolean isOutOfMap(Position pos) {
         return pos.getX() > 29 || pos.getX() < 0 || pos.getY() > 29 || pos.getY() < 0;
     }
 
     /**
-     * Adott pozíciót visszahelyez a pálya ellentétes oldalára, ha az kívül esik a pályán.
+     * Adott pozíciót visszahelyez a pálya ellentétes oldalára, ha az kívül esik
+     * a pályán.
      *
      * @param head egy a pályán kívülre eső pozíció
      * @return egy a pályára visszahelyezett pozíció
@@ -140,7 +147,8 @@ public class SnakeEngine {
      *
      * @param head egy pozíció amelyből a következő lépésre lépünk
      * @param direction egy irány amerre lépünk
-     * @return <code>igaz</code>, ha a következő lépés a pálya falára esik, egyébként <code>hamis</code>
+     * @return <code>igaz</code>, ha a következő lépés a pálya falára esik,
+     * egyébként <code>hamis</code>
      */
     public Boolean isNextWall(Position head, Direction direction) {
         Position newhead = getNextPosition(head, direction);
@@ -152,7 +160,8 @@ public class SnakeEngine {
      *
      * @param snake a lista amiben a pozíciót keressük
      * @param next a pozíció amit a listában keresünk
-     * @return <code>igaz</code>, ha a pozíció benne van a listában, egyébként <code>hamis</code>
+     * @return <code>igaz</code>, ha a pozíció benne van a listában, egyébként
+     * <code>hamis</code>
      */
     public Boolean isInList(List<Position> snake, Position next) {
         for (int i = 0; i < snake.size(); i++) {
@@ -170,7 +179,8 @@ public class SnakeEngine {
      * @param head a pozíció ahonnan lépni fogunk
      * @param direction az irány amerre lépni fogunk
      * @param food az étel pozíciója
-     * @return <code>igaz</code>, ha a következő lépés pozíciója az étel pozíciójára esik, egyébként <code>hamis</code>
+     * @return <code>igaz</code>, ha a következő lépés pozíciója az étel
+     * pozíciójára esik, egyébként <code>hamis</code>
      */
     public Boolean isNextFood(Position head, Direction direction, Position food) {
         return getNextPosition(head, direction).equals(food);
@@ -190,8 +200,8 @@ public class SnakeEngine {
     }
 
     /**
-     * Visszaadja az olyan üres pozíciók listáját a pályáról, ahol nincs a Snakenek
-     * cellája, vagy nincs étel.
+     * Visszaadja az olyan üres pozíciók listáját a pályáról, ahol nincs a
+     * Snakenek cellája, vagy nincs étel.
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista
      * @param food az étel pozíciója

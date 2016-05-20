@@ -86,7 +86,8 @@ public class XMLManager implements XMLManagerDao {
     }
 
     /**
-     * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó listát.
+     * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó
+     * listát.
      *
      * @param path az xml fájl elérési útvonala
      * @return az xml fájlból kiolvasott játékosok adatait tartalmazó lista
@@ -179,7 +180,8 @@ public class XMLManager implements XMLManagerDao {
      *
      * @param path az xml fájl elérési útvonala
      * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
-     * @return <code>igaz</code>, ha a játékos adatai szerepelnek az XML fájlban, egyébként <code>hamis</code>
+     * @return <code>igaz</code>, ha a játékos adatai szerepelnek az XML
+     * fájlban, egyébként <code>hamis</code>
      */
     @Override
     public boolean isPlayerInXML(Path path, Player jatekos) {

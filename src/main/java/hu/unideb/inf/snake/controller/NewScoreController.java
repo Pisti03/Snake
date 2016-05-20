@@ -77,8 +77,9 @@ public class NewScoreController implements Initializable {
 
         if (!nameField.getText().isEmpty()) {
             Player player = new Player(nameField.getText(), score);
-            if(!manager.isPlayerInXML(p, player))
+            if (!manager.isPlayerInXML(p, player)) {
                 manager.addNewPlayerToXML(p, player);
+            }
             Stage stage = (Stage) buttonYes.getScene().getWindow();
             stage.close();
         }
@@ -90,6 +91,7 @@ public class NewScoreController implements Initializable {
         Stage stage = (Stage) buttonYes.getScene().getWindow();
         stage.close();
     }
+
     @SuppressWarnings("javadocmethod")
     public void init(int score) {
         logger.trace("Player reached score: " + score);

@@ -156,7 +156,7 @@ public class GameController implements Initializable {
     private void endgame() {
         engine.stop();
         logger.info("End of game.");
-        logger.info("Final score: "+engine.getScore());
+        logger.info("Final score: " + engine.getScore());
         try {
             Stage stage;
             Parent root;

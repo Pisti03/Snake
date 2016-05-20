@@ -40,7 +40,8 @@ public interface XMLManagerDao {
     public void createPlayersXML(Path path);
 
     /**
-     * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó listát.
+     * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó
+     * listát.
      *
      * @param path az xml fájl elérési útvonala
      * @return az xml fájlból kiolvasott játékosok adatait tartalmazó lista

@@ -22,6 +22,8 @@ package hu.unideb.inf.snake.model;
  * #L%
  */
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Egy Snake adatatait tartalmazó osztály.
@@ -30,6 +32,7 @@ import java.util.List;
  */
 public class Snake {
 
+    private static Logger logger = LoggerFactory.getLogger(Snake.class);
     /**
      * A Snake jelenlegi iránya.
      */
@@ -106,6 +109,7 @@ public class Snake {
      * @param direction a következő lépés iránya
      */
     public void setNextDirection(Direction direction) {
+        logger.debug("Direction: " + this.direction + " nextDirection: " + nextDirection + " newDirection: " + direction);
         if (direction != Direction.RIGHT && this.direction == Direction.LEFT) {
             this.nextDirection = direction;
         } else if (direction != Direction.LEFT && this.direction == Direction.RIGHT) {
@@ -115,7 +119,7 @@ public class Snake {
         } else if (direction != Direction.DOWN && this.direction == Direction.UP) {
             this.nextDirection = direction;
         }
-
+        
     }
-
+    
 }

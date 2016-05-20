@@ -45,7 +45,6 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 
 /**
- *
  * @author Kokas István
  */
 public class HighScoresController implements Initializable {

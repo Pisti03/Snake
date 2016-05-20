@@ -21,8 +21,6 @@ package hu.unideb.inf.snake;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-
-
 import hu.unideb.inf.snake.model.Position;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -60,13 +58,24 @@ public class PositionTest {
     }
 
     @Test
-    public void testEquals(){
-        Position teszt=null;
+    public void testEquals() {
+        Position teszt = null;
         Position teszt2 = new Position();
         String position = "ez nem egy pozicio";
         assertFalse(teszt2.equals(teszt));
         assertFalse(teszt2.equals(position));
         Position teszt3 = new Position();
-        assertEquals(teszt3, teszt2); 
+        assertEquals(teszt3, teszt2);
+    }
+
+    @Test
+    public void testSetValue() {
+        Position teszt = new Position(5, 6);
+        Position teszt2 = new Position(7, 8);
+        assertEquals(5, teszt.getX());
+        assertEquals(6, teszt.getY());
+        teszt.setValue(teszt2);
+        assertEquals(7, teszt.getX());
+        assertEquals(8, teszt.getY());
     }
 }
