@@ -64,9 +64,7 @@ public class XMLManager implements XMLManagerDao {
     }
 
     /**
-     * Létrehozza a megadott elérési útvonalon az players.xml fájlt.
-     *
-     * @param path az elérési útvonal
+     * {@inheritDoc}
      */
     @Override
     public void createPlayersXML(Path path) {
@@ -86,11 +84,7 @@ public class XMLManager implements XMLManagerDao {
     }
 
     /**
-     * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó
-     * listát.
-     *
-     * @param path az xml fájl elérési útvonala
-     * @return az xml fájlból kiolvasott játékosok adatait tartalmazó lista
+     * {@inheritDoc}
      */
     @Override
     public List<Element> readPlayersFromXML(Path path) {
@@ -114,11 +108,7 @@ public class XMLManager implements XMLManagerDao {
     }
 
     /**
-     * Pontszám alapján csökkenő sorrendbe rendezi a listában szereplő
-     * játékosokat.
-     *
-     * @param lista játékosok adatait tartalmazó listta
-     * @return játékosokat tartalmazó lista pontszám szerint csökkenő sorrendben
+     * {@inheritDoc}
      */
     @Override
     public List<Element> sortPlayersByScore(List<Element> lista) {
@@ -127,10 +117,7 @@ public class XMLManager implements XMLManagerDao {
     }
 
     /**
-     * Egy új játékost ad a players.xml fájlhoz.
-     *
-     * @param path az xml fájl elérési útvonala
-     * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
+     * {@inheritDoc}
      */
     @Override
     public void addNewPlayerToXML(Path path, Player jatekos) {
@@ -175,13 +162,7 @@ public class XMLManager implements XMLManagerDao {
     }
 
     /**
-     * Igazat ad vissza, ha az adott útvonalon lévő XML fájlban szerepelnek az
-     * adott játékos adatai.
-     *
-     * @param path az xml fájl elérési útvonala
-     * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
-     * @return <code>igaz</code>, ha a játékos adatai szerepelnek az XML
-     * fájlban, egyébként <code>hamis</code>
+     * {@inheritDoc}
      */
     @Override
     public boolean isPlayerInXML(Path path, Player jatekos) {
