@@ -24,7 +24,6 @@ package hu.unideb.inf.snake.controller;
 import hu.unideb.inf.snake.model.Player;
 import hu.unideb.inf.snake.model.XMLManager;
 import hu.unideb.inf.snake.model.XMLManagerDao;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -78,8 +77,8 @@ public class NewScoreController implements Initializable {
 
         if (!nameField.getText().isEmpty()) {
             Player player = new Player(nameField.getText(), score);
-            logger.trace("Player saved score: " + player);
-            manager.addNewPlayerToXML(p, player);
+            if(!manager.isPlayerInXML(p, player))
+                manager.addNewPlayerToXML(p, player);
             Stage stage = (Stage) buttonYes.getScene().getWindow();
             stage.close();
         }
@@ -91,7 +90,7 @@ public class NewScoreController implements Initializable {
         Stage stage = (Stage) buttonYes.getScene().getWindow();
         stage.close();
     }
-
+    @SuppressWarnings("javadocmethod")
     public void init(int score) {
         logger.trace("Player reached score: " + score);
         this.score = score;

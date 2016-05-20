@@ -44,11 +44,11 @@ public class Player {
     private LocalDate date;
 
     /**
-     * Készít egy új {@link Player} objektumot, a megadott név és pont alapján.
-     * A játék időpontja a játékos objektum létrehozásának időpontja lesz
+     * Készít egy új játékost a megadott név és pont alapján. A játék időpontja
+     * a játékos létrehozásának időpontja lesz
      *
      * @param name a játékos neve
-     * @param pont a játékos pontja
+     * @param pont a játékos által elért pontszám
      */
     public Player(String name, int pont) {
         this.name = name;
@@ -68,7 +68,7 @@ public class Player {
     /**
      * Visszaadja a játékos pontszámát.
      *
-     * @return a játékos pontszáma
+     * @return a játékos által elért pontszám
      */
     public int getPont() {
         return pont;
@@ -93,9 +93,9 @@ public class Player {
     }
 
     /**
-     * Beállítja a játékos pontját.
+     * Beállítja a játékos pontszámát.
      *
-     * @param pont a játékos pontja
+     * @param pont a játékos által elért pontszám
      */
     public void setPont(int pont) {
         this.pont = pont;

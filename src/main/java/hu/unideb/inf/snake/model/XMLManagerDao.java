@@ -26,7 +26,7 @@ import java.util.List;
 import org.w3c.dom.Element;
 
 /**
- * Az XMLManager DAO osztálya, az XML fájlon végezhető műveleteket definiálja.
+ * Az XMLManager DAO interfész, az XML fájlon végezhető műveleteket definiálja.
  *
  * @author Kokas István
  */
@@ -40,7 +40,7 @@ public interface XMLManagerDao {
     public void createPlayersXML(Path path);
 
     /**
-     * Visszaadja az xml fájlból kiolvasott játékosok adatait egy listában.
+     * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó listát.
      *
      * @param path az xml fájl elérési útvonala
      * @return az xml fájlból kiolvasott játékosok adatait tartalmazó lista
@@ -70,7 +70,8 @@ public interface XMLManagerDao {
      *
      * @param path az xml fájl elérési útvonala
      * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
-     * @return igaz, ha a játékos adatai szerepelnek az XML fájlban
+     * @return <code>igaz</code>, ha a játékos adatai szerepelnek az XML
+     * fájlban, egyébként <code>hamis</code>
      */
     public boolean isPlayerInXML(Path path, Player jatekos);
 }

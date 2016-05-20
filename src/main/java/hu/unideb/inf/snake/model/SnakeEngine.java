@@ -27,36 +27,37 @@ import java.util.Random;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
- * A Snake játék alapvető funkciót leíró osztály.
+ * A Snake játék alapvető funkciót tartalmazó osztály.
  *
  * @author Kokas István
  */
 public class SnakeEngine {
 
     /**
-     * A Snake összes celláját a kövekező lépés pozíciójára lépteti. Ellenőrzi,
-     * hogy a következő lépésben a Snake ételt vesz fel vagy sem. Ha igen, akkor
-     * megvívja a {@link #grow} metódust és a Snake nőni fog. Ha a fal ki van
-     * kapcsolva és a Snake kimegy a pályáról, amit az {@link #isOutOfMap}
-     * metódussal ellenőríz, akkor a {@link #backToMap} metódussal visszahelyezi
-     * a pályára. Ha a fal be van kapcsolva és falnak ütközik, vagy önmagának a
-     * <code>game</code> változó értékét hamisra állítja.
+     * A Snake összes celláját a kövekező lépés pozíciójára állítja. Ellenőrzi,
+     * hogy a következő lépésben a Snake falnak ütközik, vagy önmagának. Ha
+     * igen, akkor a <code>game</code> változó értékét hamisra állítja és a
+     * játéknak vége, a Snake nem lép új pozícióra. Ha a fal ki van kapcsolva és
+     * a Snake kilép a pályáról, amit az <code>isOutOfMap</code> metódussal
+     * ellenőríz akkor a Snake fejét a <code>backToMap</code> metódussal
+     * visszahelyezi a pálya ellentétes oldalára. A visszaadott lista, a lépés
+     * utáni új pozíciókat tartalmazza.
      *
      * @param snake a Snake celláinak léptetés előtti pozícióit tartalmazó lista
      * @param direction a lépés iránya
      * @param food az étel pozíciója
-     * @param fal a fal állapota
-     * @param game a játék állapota, igaz ha a játék még fut
+     * @param wall a fal állapota, be van e kapcsolva
+     * @param game a játék állapota, <code>igaz</code> ha a játék még fut
      * @return a Snake celláinak léptetés utáni új pozícióit tartalmazó lista
      */
-    public List<Position> moveToNextPosition(List<Position> snake, Direction direction, Position food, boolean fal, SimpleBooleanProperty game) {
+    public List<Position> moveToNextPosition(List<Position> snake, Direction direction, Position food, boolean wall, SimpleBooleanProperty game) {
         Position seged = new Position(snake.get(snake.size() - 1).getX(), snake.get(snake.size() - 1).getY());
         Boolean nott = false;
         Position nextHead = getNextPosition(snake.get(0), direction);
         if (isOutOfMap(nextHead)) {
             nextHead = backToMap(nextHead);
         }
-        if (isInList(snake, nextHead) || (fal && isNextWall(snake.get(0), direction))) {
+        if (isInList(snake, nextHead) || (wall && isNextWall(snake.get(0), direction))) {
             game.set(false);
         }
         if (game.getValue()) {
@@ -105,18 +106,18 @@ public class SnakeEngine {
     /**
      * Igazat ad vissza, ha az adott pozíció a pályán kívűlre esik.
      *
-     * @param pos egy pozíció amelyet ellenőrízni szeretnénk, hogy a pályán van
-     * e
-     * @return igaz, ha a pozíció a pályán kívűlre esik
+     * @param pos egy pozíció amelyet ellenőrízni szeretnénk, hogy a pályán
+     * belülre esik e
+     * @return <code>igaz</code>, ha a pozíció a pályán kívűlre esik, egyébként <code>hamis</code>
      */
     public Boolean isOutOfMap(Position pos) {
         return pos.getX() > 29 || pos.getX() < 0 || pos.getY() > 29 || pos.getY() < 0;
     }
 
     /**
-     * Adott pozíciót visszahelyezi a pálya ellentétes oldalára.
+     * Adott pozíciót visszahelyez a pálya ellentétes oldalára, ha az kívül esik a pályán.
      *
-     * @param head egy pályán kívúlre eső pozíció
+     * @param head egy a pályán kívülre eső pozíció
      * @return egy a pályára visszahelyezett pozíció
      */
     public Position backToMap(Position head) {
@@ -139,7 +140,7 @@ public class SnakeEngine {
      *
      * @param head egy pozíció amelyből a következő lépésre lépünk
      * @param direction egy irány amerre lépünk
-     * @return igaz, ha a következő lépés a pálya falára esik
+     * @return <code>igaz</code>, ha a következő lépés a pálya falára esik, egyébként <code>hamis</code>
      */
     public Boolean isNextWall(Position head, Direction direction) {
         Position newhead = getNextPosition(head, direction);
@@ -147,11 +148,11 @@ public class SnakeEngine {
     }
 
     /**
-     * Igazat ad vissza, ha a megadott pozíció benne van a megadott listában.
+     * Igazat ad vissza, ha a adott pozíció benne van az adott listában.
      *
      * @param snake a lista amiben a pozíciót keressük
      * @param next a pozíció amit a listában keresünk
-     * @return igaz ha a pozíció benne van a listában
+     * @return <code>igaz</code>, ha a pozíció benne van a listában, egyébként <code>hamis</code>
      */
     public Boolean isInList(List<Position> snake, Position next) {
         for (int i = 0; i < snake.size(); i++) {
@@ -169,18 +170,18 @@ public class SnakeEngine {
      * @param head a pozíció ahonnan lépni fogunk
      * @param direction az irány amerre lépni fogunk
      * @param food az étel pozíciója
-     * @return igaz, ha a következő lépés pozíciója az étel pozíciójára esik
+     * @return <code>igaz</code>, ha a következő lépés pozíciója az étel pozíciójára esik, egyébként <code>hamis</code>
      */
     public Boolean isNextFood(Position head, Direction direction, Position food) {
         return getNextPosition(head, direction).equals(food);
     }
 
     /**
-     * A Snake méretét megnöveli egyel és új cellát ad a Snake végéhez.
+     * A Snake méretét megnöveli egyel, új cellát ad a Snake végéhez.
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista.
      * @param newlast a Snake új utolsó cellájának pozíciója
-     * @return a megnövelt mérető Snake pozícióit tartalmazó lista
+     * @return a megnövelt méretű Snake pozícióit tartalmazó lista
      */
     public List<Position> grow(List<Position> snake, Position newlast) {
         List<Position> newsnake = new ArrayList<>(snake);
@@ -189,7 +190,7 @@ public class SnakeEngine {
     }
 
     /**
-     * Visszaadja az olyan üres pozíciókat a pályáról, ahol nincs a Snakenek
+     * Visszaadja az olyan üres pozíciók listáját a pályáról, ahol nincs a Snakenek
      * cellája, vagy nincs étel.
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista
@@ -216,7 +217,7 @@ public class SnakeEngine {
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista.
      * @param food az étel pozíciója
-     * @return egy véletlenszerű üres pozíció
+     * @return egy véletlenszerű üres pozíció a pályán
      */
     public Position getRandomEmptyPosition(List<Position> snake, Position food) {
         Position newfood;

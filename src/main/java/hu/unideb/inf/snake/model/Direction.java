@@ -36,11 +36,11 @@ public enum Direction {
      */
     DOWN,
     /**
-     * Jobb.
+     * Jobbra.
      */
     RIGHT,
     /**
-     * Bal.
+     * Balra.
      */
     LEFT
 }

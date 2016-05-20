@@ -152,7 +152,7 @@ public class GameController implements Initializable {
 
     }
 
-    public void endgame() {
+    private void endgame() {
         engine.stop();
         logger.info("End of game.");
         try {
@@ -171,7 +171,7 @@ public class GameController implements Initializable {
         }
     }
 
-    public void rajzol() {
+    private void rajzol() {
         labelScore.setText("Score: " + engine.getScore());
         logger.info("Score: " + engine.getScore());
         gridPane.getChildren().clear();
@@ -188,7 +188,7 @@ public class GameController implements Initializable {
         }
     }
 
-    public void init() {
+    private void init() {
         logger.info("Initializing game.");
         labelScore.setText("Score: " + 0);
         if (engine != null) {
@@ -231,11 +231,11 @@ public class GameController implements Initializable {
         init();
         engine.stop();
         speedChoice.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-                    @Override
-                    public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                        engine.changefps(speedChoice.getSelectionModel().getSelectedItem().toString());
-                    }
-                });
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                engine.changefps(speedChoice.getSelectionModel().getSelectedItem().toString());
+            }
+        });
         checkboxWall.selectedProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {

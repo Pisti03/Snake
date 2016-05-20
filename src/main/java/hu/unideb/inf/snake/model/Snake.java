@@ -24,7 +24,7 @@ package hu.unideb.inf.snake.model;
 import java.util.List;
 
 /**
- * A Snake adatatait tartalmazó osztály.
+ * Egy Snake adatatait tartalmazó osztály.
  *
  * @author Kokas István
  */
@@ -47,7 +47,7 @@ public class Snake {
      * Készít egy új {@link Snake} objektumok a megadott irány és a cellák
      * pozícióit tartalmazó lista alapján.
      *
-     * @param direction az első lépés iránya
+     * @param direction az első lépés iránya amerre a Snake lépni fog
      * @param body a Snake kezdeti celláinak pozícióit tartalmazó lista
      */
     public Snake(Direction direction, List<Position> body) {

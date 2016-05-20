@@ -31,11 +31,11 @@ import java.util.Random;
 public class Position {
 
     /**
-     * Egy cella x koordinátája.
+     * A cella x koordinátája.
      */
     private int x;
     /**
-     * Egy y koordinátája.
+     * A cella y koordinátája.
      */
     private int y;
 
@@ -105,8 +105,7 @@ public class Position {
     }
 
     /**
-     * Egy másik {@link Position} objektum alapján beállítja ennek a pozíciónak
-     * a koordinátáit.
+     * Egy másik pozíció alapján beállítja ennek a pozíciónak a koordinátáit.
      *
      * @param a egy másik pozíció
      */
@@ -116,7 +115,7 @@ public class Position {
     }
 
     /**
-     * A pozíció x és y koordinátáit egy véletleszerű értékre állítja.
+     * A pozíció x és y koordinátáit egy véletlenszerű értékre állítja.
      *
      * @param min a véletlenszám alsó határa
      * @param max a véletlenszám felső határa
@@ -132,8 +131,8 @@ public class Position {
      * objektummal.
      *
      * @param obj egy másik objektum
-     * @return igaz, ha az objektum megegyezik a paraméterként kapott
-     * objektummal
+     * @return <code>igaz</code>, ha az objektum megegyezik a paraméterként
+     * kapott objektummal, egyébként <code>hamis</code>
      */
     @Override
     public boolean equals(Object obj) {

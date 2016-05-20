@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * Az xml fájl kezelését végző osztály.
+ * Az xml fájlon végezhető műveleteket tartalmazó osztály.
  *
  * @author Kokas István
  */
@@ -86,7 +86,7 @@ public class XMLManager implements XMLManagerDao {
     }
 
     /**
-     * Visszaadja az xml fájlból kiolvasott játékosok adatait egy listában.
+     * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó listát.
      *
      * @param path az xml fájl elérési útvonala
      * @return az xml fájlból kiolvasott játékosok adatait tartalmazó lista
@@ -179,7 +179,7 @@ public class XMLManager implements XMLManagerDao {
      *
      * @param path az xml fájl elérési útvonala
      * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
-     * @return igaz, ha a játékos adatai szerepelnek az XML fájlban
+     * @return <code>igaz</code>, ha a játékos adatai szerepelnek az XML fájlban, egyébként <code>hamis</code>
      */
     @Override
     public boolean isPlayerInXML(Path path, Player jatekos) {
@@ -187,8 +187,7 @@ public class XMLManager implements XMLManagerDao {
         lista = readPlayersFromXML(path);
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getElementsByTagName("nev").item(0).getTextContent().equals(jatekos.getName())
-                    && lista.get(i).getElementsByTagName("pont").item(0).getTextContent().equals(Integer.toString(jatekos.getPont()))
-                    && lista.get(i).getElementsByTagName("date").item(0).getTextContent().equals(jatekos.getDate().toString())) {
+                    && lista.get(i).getElementsByTagName("pont").item(0).getTextContent().equals(Integer.toString(jatekos.getPont()))) {
                 return true;
             }
         }
