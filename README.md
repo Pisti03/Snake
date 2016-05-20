@@ -1,4 +1,4 @@
 # Snake
 A simple Snake game in JavaFX.
 # License
-The project was made under the GNU General Public License v3.0.
+This project is licensed under The GNU General Public License v3.0 - see the [LICENSE.txt](/LICENSE.txt) file for details
