@@ -29,6 +29,8 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A játék motorja.
@@ -37,6 +39,7 @@ import javafx.util.Duration;
  */
 public class GameEngine {
 
+    private static Logger logger = LoggerFactory.getLogger(GameEngine.class);
     /**
      * Az eddig lefutott {@link KeyFrame}-ek száma.
      */
@@ -125,8 +128,9 @@ public class GameEngine {
      * A játék mozgásához tartozó funkciókat hajtja végre. A {@link Snake}
      * irányát a következő irányra állítja a {@link Snake#turn()} metódussal. A
      * {@link Snake}-et a következő lépésre lépteti. Lekéri a pontszámot a
-     * <code>score</code> változóba a {@link SnakeEngine#countScore(java.util.List)} metódus
-     * használatával. Egyel növeli a lefutott <code>Frame</code>-ek számát.
+     * <code>score</code> változóba a
+     * {@link SnakeEngine#countScore(java.util.List)} metódus használatával.
+     * Egyel növeli a lefutott <code>Frame</code>-ek számát.
      */
     public void run() {
         snake.turn();
@@ -170,15 +174,19 @@ public class GameEngine {
     public void changefps(String speed) {
         switch (speed) {
             case "SLOW":
+                logger.info("Game speed changed to slow.");
                 changefps(10);
                 break;
             case "MEDIUM":
+                logger.info("Game speed changed to medium.");
                 changefps(15);
                 break;
             case "FAST":
+                logger.info("Game speed changed to fast.");
                 changefps(25);
                 break;
             case "EXTRA":
+                logger.info("Game speed changed to extra.");
                 changefps(40);
                 break;
         }

@@ -155,6 +155,7 @@ public class GameController implements Initializable {
     private void endgame() {
         engine.stop();
         logger.info("End of game.");
+        logger.info("Final score: "+engine.getScore());
         try {
             Stage stage;
             Parent root;
@@ -173,7 +174,6 @@ public class GameController implements Initializable {
 
     private void rajzol() {
         labelScore.setText("Score: " + engine.getScore());
-        logger.info("Score: " + engine.getScore());
         gridPane.getChildren().clear();
         Circle circ = new Circle(10, Color.RED);
         gridPane.add(circ, engine.getFood().getX(), engine.getFood().getY());
