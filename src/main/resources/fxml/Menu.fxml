@@ -12,8 +12,8 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Button fx:id="buttonStart" layoutX="115.0" layoutY="41.0" mnemonicParsing="false" onAction="#Start" text="Start game" textFill="#3a13d6" />
-        <Button fx:id="buttonHighScores" layoutX="115.0" layoutY="72.0" mnemonicParsing="false" onAction="#HighScores" text="Highscores" textFill="#3a13d6" />
-        <Button fx:id="buttonExit" layoutX="134.0" layoutY="102.0" mnemonicParsing="false" onAction="#Exit" text="Exit" textFill="#3a13d6" />
+        <Button fx:id="buttonStart" layoutX="111.0" layoutY="42.0" mnemonicParsing="false" onAction="#Start" style="-fx-font-weight: bold;" text="Start game" textFill="#3a13d6" />
+        <Button fx:id="buttonHighScores" layoutX="111.0" layoutY="71.0" mnemonicParsing="false" onAction="#HighScores" style="-fx-font-weight: bold;" text="Highscores" textFill="#3a13d6" />
+        <Button fx:id="buttonExit" layoutX="131.0" layoutY="100.0" mnemonicParsing="false" onAction="#Exit" style="-fx-font-weight: bold;" text="Exit" textFill="#3a13d6" />
     </children>
 </AnchorPane>

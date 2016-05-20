@@ -36,6 +36,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,12 +59,15 @@ public class NewScoreController implements Initializable {
     private TextField nameField;
     @FXML
     private Label labelScore;
+    @FXML
+    private Label labelRequired;
 
     private final XMLManagerDao manager = new XMLManager();
     private int score = 0;
 
     @FXML
     private void Yes(ActionEvent event) {
+        labelRequired.setText("");
         Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
         if (!p.toFile().isFile()) {
             Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
@@ -82,6 +88,11 @@ public class NewScoreController implements Initializable {
             }
             Stage stage = (Stage) buttonYes.getScene().getWindow();
             stage.close();
+        } else{
+            labelRequired.setTextFill(Paint.valueOf("RED"));
+            labelRequired.setFont(Font.font(null, FontWeight.BOLD, 12));
+            labelRequired.setText("*required");
+            
         }
     }
 
