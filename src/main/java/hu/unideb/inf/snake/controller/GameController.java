@@ -86,12 +86,13 @@ public class GameController implements Initializable {
 
     @FXML
     private void handleButtonStart(ActionEvent event) {
-        logger.info("Starting game.");
         started = true;
         if (buttonStart.getText().equals("Start") && game.getValue()) {
+            logger.info("Starting game.");
             engine.start();
             buttonStart.setText("Restart");
         } else {
+            logger.info("Restarting game.");
             init();
             engine.start();
         }
