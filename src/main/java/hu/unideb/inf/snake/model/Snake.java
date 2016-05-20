@@ -32,15 +32,18 @@ import org.slf4j.LoggerFactory;
  */
 public class Snake {
 
-    private static Logger logger = LoggerFactory.getLogger(Snake.class);
+    private static final Logger logger = LoggerFactory.getLogger(Snake.class);
+    
     /**
      * A Snake jelenlegi iránya.
      */
     private Direction direction;
+    
     /**
      * A Snake iránya amerre a következő lépésnél fordulni fog.
      */
     private Direction nextDirection;
+    
     /**
      * A Snake celláinak pozícióit tartalmazó lista.
      */

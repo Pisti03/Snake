@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * Az xml fájlon végezhető műveleteket tartalmazó osztály.
+ * Az xml fájlon végezhető műveleteket megvalósító osztály.
  *
  * @author Kokas István
  */

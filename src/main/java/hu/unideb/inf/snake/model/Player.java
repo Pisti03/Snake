@@ -29,15 +29,17 @@ import java.time.LocalDate;
  * @author Kokas István
  */
 public class Player {
-
+    
     /**
      * A játékos neve.
      */
     private String name;
+    
     /**
      * A játékos által elért pontszám.
      */
     private int pont;
+    
     /**
      * A játékos által játszott játék időpontja.
      */

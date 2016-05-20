@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MenuController implements Initializable {
 
-    private Logger logger = LoggerFactory.getLogger(MenuController.class);
+    private final Logger logger = LoggerFactory.getLogger(MenuController.class);
     @FXML
     private Button buttonStart;
     @FXML

@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MainApp extends Application {
 
-    private static Logger logger = LoggerFactory.getLogger(MainApp.class);
+    private static final Logger logger = LoggerFactory.getLogger(MainApp.class);
 
     @Override
     public void start(Stage stage) throws Exception {

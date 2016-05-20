@@ -21,12 +21,14 @@ package hu.unideb.inf.snake.model;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+
 /**
  * Irányok amerre a Snake léphet.
  *
  * @author Kokas István
  */
 public enum Direction {
+    
     /**
      * Fel.
      */

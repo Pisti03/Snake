@@ -21,6 +21,7 @@ package hu.unideb.inf.snake;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+
 import hu.unideb.inf.snake.model.Position;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

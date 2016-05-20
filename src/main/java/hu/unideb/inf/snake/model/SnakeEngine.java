@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
  */
 public class SnakeEngine {
 
-    private static Logger logger = LoggerFactory.getLogger(SnakeEngine.class);
+    private static final Logger logger = LoggerFactory.getLogger(SnakeEngine.class);
 
     /**
      * A Snake összes celláját a kövekező lépés pozíciójára állítja. Ellenőrzi,

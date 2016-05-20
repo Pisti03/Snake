@@ -49,7 +49,7 @@ import org.w3c.dom.Element;
  */
 public class HighScoresController implements Initializable {
 
-    private static Logger logger = LoggerFactory.getLogger(HighScoresController.class);
+    private static final Logger logger = LoggerFactory.getLogger(HighScoresController.class);
     @FXML
     private Button buttonMenu;
     @FXML

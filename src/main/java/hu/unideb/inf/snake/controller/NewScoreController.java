@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
  */
 public class NewScoreController implements Initializable {
 
-    private static Logger logger = LoggerFactory.getLogger(NewScoreController.class);
+    private static final Logger logger = LoggerFactory.getLogger(NewScoreController.class);
 
     @FXML
     private Button buttonYes;

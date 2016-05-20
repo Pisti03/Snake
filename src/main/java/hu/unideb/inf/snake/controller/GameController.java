@@ -60,7 +60,7 @@ import org.slf4j.LoggerFactory;
  */
 public class GameController implements Initializable {
 
-    private static Logger logger = LoggerFactory.getLogger(GameController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GameController.class);
     @FXML
     private GridPane gridPane;
     @FXML

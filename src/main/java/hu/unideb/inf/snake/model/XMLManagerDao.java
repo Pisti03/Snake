@@ -21,6 +21,7 @@ package hu.unideb.inf.snake.model;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+
 import java.nio.file.Path;
 import java.util.List;
 import org.w3c.dom.Element;

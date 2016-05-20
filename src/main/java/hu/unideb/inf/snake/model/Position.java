@@ -34,6 +34,7 @@ public class Position {
      * A cella x koordinátája.
      */
     private int x;
+    
     /**
      * A cella y koordinátája.
      */
