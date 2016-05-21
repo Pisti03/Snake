@@ -103,7 +103,7 @@ public class NewScoreController implements Initializable {
         stage.close();
     }
 
-    @SuppressWarnings("javadocmethod")
+    @SuppressWarnings("checkstyle:javadocmethod")
     public void init(int score) {
         logger.trace("Player reached score: " + score);
         this.score = score;

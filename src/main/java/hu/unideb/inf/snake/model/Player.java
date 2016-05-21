@@ -29,17 +29,17 @@ import java.time.LocalDate;
  * @author Kokas István
  */
 public class Player {
-    
+
     /**
      * A játékos neve.
      */
     private String name;
-    
+
     /**
      * A játékos által elért pontszám.
      */
-    private int pont;
-    
+    private int point;
+
     /**
      * A játékos által játszott játék időpontja.
      */
@@ -50,11 +50,11 @@ public class Player {
      * a játékos létrehozásának időpontja lesz
      *
      * @param name a játékos neve
-     * @param pont a játékos által elért pontszám
+     * @param point a játékos által elért pontszám
      */
-    public Player(String name, int pont) {
+    public Player(String name, int point) {
         this.name = name;
-        this.pont = pont;
+        this.point = point;
         this.date = LocalDate.now();
     }
 
@@ -72,8 +72,8 @@ public class Player {
      *
      * @return a játékos által elért pontszám
      */
-    public int getPont() {
-        return pont;
+    public int getPoint() {
+        return point;
     }
 
     /**
@@ -97,10 +97,10 @@ public class Player {
     /**
      * Beállítja a játékos pontszámát.
      *
-     * @param pont a játékos által elért pontszám
+     * @param point a játékos által elért pontszám
      */
-    public void setPont(int pont) {
-        this.pont = pont;
+    public void setPont(int point) {
+        this.point = point;
     }
 
     /**
@@ -112,13 +112,9 @@ public class Player {
         this.date = date;
     }
 
-    /**
-     * Visszaad egy a játékos adatait leíró {@link String}-et.
-     *
-     * @return egy a játékos adatait leíró {@link String}
-     */
+    @SuppressWarnings("checkstyle:javadocmethod")
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", pont=" + pont + ", date=" + date + '}';
+        return "Player{" + "name=" + name + ", point=" + point + ", date=" + date + '}';
     }
 }

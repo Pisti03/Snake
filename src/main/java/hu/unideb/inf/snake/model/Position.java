@@ -34,7 +34,7 @@ public class Position {
      * A cella x koordinátája.
      */
     private int x;
-    
+
     /**
      * A cella y koordinátája.
      */
@@ -127,14 +127,7 @@ public class Position {
         y = rand.nextInt(max - min) + min;
     }
 
-    /**
-     * Igazat ad vissza, ha az objektum megegyezik a paraméterként kapott
-     * objektummal.
-     *
-     * @param obj egy másik objektum
-     * @return <code>igaz</code>, ha az objektum megegyezik a paraméterként
-     * kapott objektummal, egyébként <code>hamis</code>
-     */
+    @SuppressWarnings("checkstyle:javadocmethod")
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -156,11 +149,7 @@ public class Position {
         return true;
     }
 
-    /**
-     * Visszaad egy a pozíció koordinátáit leíró {@link String}-et.
-     *
-     * @return egy a pozívió koordinátáit leíró {@link String}
-     */
+    @SuppressWarnings("checkstyle:javadocmethod")
     @Override
     public String toString() {
         return "Position{" + "x=" + x + ", y=" + y + '}';

@@ -132,7 +132,7 @@ public class XMLManager implements XMLManagerDao {
 
             Element player = doc.createElement("player");
             Element pont = doc.createElement("pont");
-            pont.appendChild(doc.createTextNode(Integer.toString(jatekos.getPont())));
+            pont.appendChild(doc.createTextNode(Integer.toString(jatekos.getPoint())));
             Element nev = doc.createElement("nev");
             nev.appendChild(doc.createTextNode(jatekos.getName()));
             Element date = doc.createElement("date");
@@ -170,7 +170,7 @@ public class XMLManager implements XMLManagerDao {
         lista = readPlayersFromXML(path);
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getElementsByTagName("nev").item(0).getTextContent().equals(jatekos.getName())
-                    && lista.get(i).getElementsByTagName("pont").item(0).getTextContent().equals(Integer.toString(jatekos.getPont()))) {
+                    && lista.get(i).getElementsByTagName("pont").item(0).getTextContent().equals(Integer.toString(jatekos.getPoint()))) {
                 return true;
             }
         }

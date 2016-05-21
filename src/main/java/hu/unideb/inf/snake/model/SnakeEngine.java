@@ -39,7 +39,7 @@ public class SnakeEngine {
 
     /**
      * A Snake összes celláját a kövekező lépés pozíciójára állítja. Ellenőrzi,
-     * hogy a következő lépésben a Snake falnak ütközik, vagy önmagának. Ha
+     * hogy a következő lépésben a Snake falnak vagy önmagának ütközik e, ha
      * igen, akkor a <code>game</code> változó értékét hamisra állítja és a
      * játéknak vége, a Snake nem lép új pozícióra. Ha a fal ki van kapcsolva és
      * a Snake kilép a pályáról, amit az <code>isOutOfMap</code> metódussal
@@ -83,7 +83,7 @@ public class SnakeEngine {
     }
 
     /**
-     * Adott pozíció és irány alapján megadja a következő lépés pozícióját.
+     * Adott pozíció és irány alapján visszaadja a következő lépés pozícióját.
      *
      * @param head a pozíció, ahonnan a következő pozícióra lépünk
      * @param direction az irány, amerre lépni fogunk
@@ -156,7 +156,8 @@ public class SnakeEngine {
     }
 
     /**
-     * Igazat ad vissza, ha a adott pozíció benne van az adott listában.
+     * Igazat ad vissza, ha a paraméterként kapott pozíció <code>next</code>
+     * benne van a <code>snake</code> listában.
      *
      * @param snake a lista amiben a pozíciót keressük
      * @param next a pozíció amit a listában keresünk
@@ -187,7 +188,8 @@ public class SnakeEngine {
     }
 
     /**
-     * A Snake méretét megnöveli egyel, új cellát ad a Snake végéhez.
+     * A Snake méretét megnöveli egyel. A paraméterként kapott
+     * <code>newlast</code> pozíciót hozzáadja a <code>snake</code> listához.
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista.
      * @param newlast a Snake új utolsó cellájának pozíciója
@@ -201,7 +203,9 @@ public class SnakeEngine {
 
     /**
      * Visszaadja az olyan üres pozíciók listáját a pályáról, ahol nincs a
-     * Snakenek cellája, vagy nincs étel.
+     * Snakenek cellája amit paraméterként kap meg a <code>snake</code>
+     * listában, vagy nincs étel aminek a pozícióját a <code>food</code>
+     * paraméterként kapja meg.
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista
      * @param food az étel pozíciója
@@ -223,7 +227,8 @@ public class SnakeEngine {
     }
 
     /**
-     * Visszaad egy véletlenszerű üres pozíciót a pályán.
+     * Visszaad egy véletlenszerű üres pozíciót a pályán. Az üres pozíciók
+     * listáját a <code>getEmptyPositions</code> metódus használatával kéri le.
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista.
      * @param food az étel pozíciója
@@ -239,7 +244,7 @@ public class SnakeEngine {
 
     /**
      * A Snake mérete alapján visszaadja az elért pontszámot. A Snake kezdő
-     * mérete 3, így az elért pontszám a lista mérete mínusz 3.
+     * mérete 3, az elért pontszám a lista mérete mínusz 3.
      *
      * @param list a Snake celláinak pozícióit tartalmazó lista
      * @return a Snake mérete alapján számolt pontszám

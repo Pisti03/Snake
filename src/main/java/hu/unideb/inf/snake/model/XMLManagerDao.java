@@ -21,7 +21,6 @@ package hu.unideb.inf.snake.model;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-
 import java.nio.file.Path;
 import java.util.List;
 import org.w3c.dom.Element;
@@ -34,7 +33,7 @@ import org.w3c.dom.Element;
 public interface XMLManagerDao {
 
     /**
-     * Létrehozza a megadott elérési útvonalon az players.xml fájlt.
+     * Létrehozza a megadott elérési útvonalon a players.xml fájlt.
      *
      * @param path az elérési útvonal
      */
@@ -59,7 +58,8 @@ public interface XMLManagerDao {
     public List<Element> sortPlayersByScore(List<Element> lista);
 
     /**
-     * Egy új játékost ad a players.xml fájlhoz.
+     * Egy új játékost ad a players.xml fájlhoz a paraméterként kapott
+     * <code>jatekos</code> adatai alapján.
      *
      * @param path az xml fájl elérési útvonala
      * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
@@ -68,7 +68,8 @@ public interface XMLManagerDao {
 
     /**
      * Igazat ad vissza, ha az adott útvonalon lévő XML fájlban szerepelnek az
-     * adott játékos adatai.
+     * adott játékos adatai. A figyelembe vett adatok a {@link Player#name} és a
+     * {@link Player#point}.
      *
      * @param path az xml fájl elérési útvonala
      * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
