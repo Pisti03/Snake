@@ -40,54 +40,54 @@ import org.slf4j.LoggerFactory;
 public class GameEngine {
 
     private static Logger logger = LoggerFactory.getLogger(GameEngine.class);
-    
+
     /**
      * Az eddig lefutott {@link KeyFrame}-ek száma.
      */
     private IntegerProperty frameCount;
-    
+
     /**
      * A másodpercenként lefutó {@link KeyFrame}-ek száma.
      */
     private int frameRate;
-    
+
     /**
-     * A játék ciklus.
+     * A játék ciklus, amely a játék lépéseit ismétli.
      */
     private Timeline gameLoop;
-    
+
     /**
-     * Szünetel e épp a játék.
+     * Szünetel e épp a játék, <code>igaz</code>, ha a szünetel.
      */
     private boolean paused = true;
-    
+
     /**
-     * Egy új {@link Snake}.
+     * Egy {@link Snake} amely a játék során irányítunk.
      */
     private Snake snake;
-    
+
     /**
      * Fut e még a játék, az értéke <code>igaz</code> ha még fut.
      */
     private SimpleBooleanProperty game;
-    
+
     /**
      * Elért pontszám.
      */
     private int score;
-    
+
     /**
      * Az étel pozíciója.
      */
     private Position food;
-    
+
     /**
      * A Snake játék alapvető funkciót leíró osztály egy példánya.
      */
     private SnakeEngine engine;
-    
+
     /**
-     * A fal állapota, be van e kapcsolva.
+     * A fal állapota, <code>igaz</code>,ha be van kapcsolva, <code>hamis</code> ha nincs.
      */
     private Boolean wall = true;
 
@@ -296,9 +296,9 @@ public class GameEngine {
     }
 
     /**
-     * Beállítja a fal állapotát.
+     * Beállítja a fal állapotát, hogy be van e kapcsolva vagy nincs.
      *
-     * @param wall a fal új állapota
+     * @param wall a fal új állapota, <code>igaz</code>, ha be van kapcsolva
      */
     public void setWall(Boolean wall) {
         this.wall = wall;
