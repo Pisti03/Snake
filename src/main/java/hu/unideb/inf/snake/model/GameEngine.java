@@ -62,7 +62,7 @@ public class GameEngine {
     private boolean paused = true;
 
     /**
-     * Egy {@link Snake} amely a játék során irányítunk.
+     * Egy {@link Snake} amelyet a játék során irányítunk.
      */
     private Snake snake;
 
