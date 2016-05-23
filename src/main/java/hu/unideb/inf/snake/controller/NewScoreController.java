@@ -48,9 +48,9 @@ import org.slf4j.LoggerFactory;
  * @author Kokas István
  */
 public class NewScoreController implements Initializable {
-
+    
     private static final Logger logger = LoggerFactory.getLogger(NewScoreController.class);
-
+    
     @FXML
     private Button buttonYes;
     @FXML
@@ -61,15 +61,16 @@ public class NewScoreController implements Initializable {
     private Label labelScore;
     @FXML
     private Label labelRequired;
-
+    
     private final XMLManagerDao manager = new XMLManager();
     private int score = 0;
-
+    
     @FXML
     private void Yes(ActionEvent event) {
         labelRequired.setText("");
         Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
         if (!p.toFile().isFile()) {
+            logger.info("The players.xml file does not exist.");
             Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
             dir.toFile().mkdirs();
             try {
@@ -78,9 +79,8 @@ public class NewScoreController implements Initializable {
                 logger.error("IOException, couldn't set directory attribute: hidden.");
             }
             manager.createPlayersXML(p);
-            System.out.println("File: " + p.toFile().isFile());
         }
-
+        
         if (!nameField.getText().isEmpty()) {
             Player player = new Player(nameField.getText(), score);
             if (!manager.isPlayerInXML(p, player)) {
@@ -88,31 +88,31 @@ public class NewScoreController implements Initializable {
             }
             Stage stage = (Stage) buttonYes.getScene().getWindow();
             stage.close();
-        } else{
+        } else {
             labelRequired.setTextFill(Paint.valueOf("RED"));
             labelRequired.setFont(Font.font(null, FontWeight.BOLD, 12));
             labelRequired.setText("*required");
             
         }
     }
-
+    
     @FXML
     private void No(ActionEvent event) {
         logger.trace("Player didn't save score.");
         Stage stage = (Stage) buttonYes.getScene().getWindow();
         stage.close();
     }
-
+    
     @SuppressWarnings("checkstyle:javadocmethod")
     public void init(int score) {
         logger.trace("Player reached score: " + score);
         this.score = score;
         labelScore.setText("Your score: " + score);
-
+        
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
     }
 }

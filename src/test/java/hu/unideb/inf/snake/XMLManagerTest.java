@@ -21,7 +21,6 @@ package hu.unideb.inf.snake;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-
 import hu.unideb.inf.snake.model.Player;
 import hu.unideb.inf.snake.model.XMLManager;
 import hu.unideb.inf.snake.model.XMLManagerDao;

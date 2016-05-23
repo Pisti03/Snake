@@ -43,7 +43,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Element;
 
 /**
  * @author Kokas István
@@ -80,6 +79,7 @@ public class HighScoresController implements Initializable {
         try {
             Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
             if (!p.toFile().isFile()) {
+                logger.info("The players.xml file does not exist.");
                 Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
                 dir.toFile().mkdirs();
                 Files.setAttribute(dir, "dos:hidden", true);

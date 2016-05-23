@@ -87,7 +87,8 @@ public class GameEngine {
     private SnakeEngine engine;
 
     /**
-     * A fal állapota, <code>igaz</code>,ha be van kapcsolva, <code>hamis</code> ha nincs.
+     * A fal állapota, <code>igaz</code>,ha be van kapcsolva, <code>hamis</code>
+     * ha nincs.
      */
     private Boolean wall = true;
 

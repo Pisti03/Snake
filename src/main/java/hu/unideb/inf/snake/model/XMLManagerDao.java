@@ -23,7 +23,6 @@ package hu.unideb.inf.snake.model;
  */
 import java.nio.file.Path;
 import java.util.List;
-import org.w3c.dom.Element;
 
 /**
  * Az XMLManager DAO interfész, az XML fájlon végezhető műveleteket definiálja.
@@ -68,8 +67,8 @@ public interface XMLManagerDao {
 
     /**
      * Igazat ad vissza, ha az adott útvonalon lévő XML fájlban szerepelnek az
-     * adott játékos adatai. A figyelembe vett adatok a {@link Player#name}, azaz a játékos neve és a
-     * {@link Player#point}, a játékos pontszáma.
+     * adott játékos adatai. A figyelembe vett adatok a {@link Player#name},
+     * azaz a játékos neve és a {@link Player#point}, a játékos pontszáma.
      *
      * @param path az xml fájl elérési útvonala
      * @param jatekos a játékos adatait tartalmazó {@link Player} objektum

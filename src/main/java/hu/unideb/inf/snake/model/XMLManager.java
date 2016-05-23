@@ -117,7 +117,7 @@ public class XMLManager implements XMLManagerDao {
      */
     @Override
     public List<Player> sortPlayersByScore(List<Player> lista) {
-        return lista.stream().sorted((t1, t2) -> t2.getPoint()-t1.getPoint()).collect(Collectors.toList());
+        return lista.stream().sorted((t1, t2) -> t2.getPoint() - t1.getPoint()).collect(Collectors.toList());
     }
 
     /**
@@ -173,7 +173,7 @@ public class XMLManager implements XMLManagerDao {
         List<Player> lista = readPlayersFromXML(path);
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getName().equals(jatekos.getName())
-                    && lista.get(i).getPoint()==jatekos.getPoint()) {
+                    && lista.get(i).getPoint() == jatekos.getPoint()) {
                 return true;
             }
         }
