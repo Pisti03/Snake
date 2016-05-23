@@ -82,6 +82,7 @@ public class NewScoreController implements Initializable {
         }
         
         if (!nameField.getText().isEmpty()) {
+            logger.info("Player saved score.");
             Player player = new Player(nameField.getText(), score);
             if (!manager.isPlayerInXML(p, player)) {
                 manager.addNewPlayerToXML(p, player);
@@ -89,6 +90,7 @@ public class NewScoreController implements Initializable {
             Stage stage = (Stage) buttonYes.getScene().getWindow();
             stage.close();
         } else {
+            logger.debug("Empty name field.");
             labelRequired.setTextFill(Paint.valueOf("RED"));
             labelRequired.setFont(Font.font(null, FontWeight.BOLD, 12));
             labelRequired.setText("*required");
@@ -98,7 +100,7 @@ public class NewScoreController implements Initializable {
     
     @FXML
     private void No(ActionEvent event) {
-        logger.trace("Player didn't save score.");
+        logger.info("Player didn't save score.");
         Stage stage = (Stage) buttonYes.getScene().getWindow();
         stage.close();
     }

@@ -60,7 +60,7 @@ License along with this program.  If not, see
     </appender>-->
     <root level="debug">
         <appender-ref ref="STDOUT"/>
-        <!--<appender-ref ref="FILE"/>
+        <!--<appender-ref ref="FILE1"/>
         <appender-ref ref="FILE2"/>-->
     </root>
 
