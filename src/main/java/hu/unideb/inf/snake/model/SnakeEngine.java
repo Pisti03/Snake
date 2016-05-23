@@ -144,12 +144,12 @@ public class SnakeEngine {
 
     /**
      * Igazat ad vissza, ha adott pozíció és irány mellett a következő lépés a
-     * pálya falára esik.
+     * pálya falán kívüli első pozícióra esik.
      *
      * @param head egy pozíció amelyből a következő lépésre lépünk
      * @param direction egy irány amerre lépünk
-     * @return <code>igaz</code>, ha a következő lépés a pálya falára esik,
-     * egyébként <code>hamis</code>
+     * @return <code>igaz</code>, ha a következő lépés a pálya falán kívüli első
+     * pozícióra esik, egyébként <code>hamis</code>
      */
     public Boolean isNextWall(Position head, Direction direction) {
         Position newhead = getNextPosition(head, direction);
