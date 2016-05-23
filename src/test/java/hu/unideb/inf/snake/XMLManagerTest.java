@@ -35,7 +35,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
-import org.w3c.dom.Element;
 
 /**
  *
@@ -101,13 +100,13 @@ public class XMLManagerTest {
         manager.addNewPlayerToXML(p, jatekos);
         manager.addNewPlayerToXML(p, jatekos2);
         manager.addNewPlayerToXML(p, jatekos3);
-        List<Element> lista = manager.readPlayersFromXML(p);
-        assertEquals(lista.get(0).getElementsByTagName("nev").item(0).getTextContent(), "Asd");
-        assertEquals(lista.get(0).getElementsByTagName("pont").item(0).getTextContent(), "5");
-        assertEquals(lista.get(1).getElementsByTagName("nev").item(0).getTextContent(), "Asd2");
-        assertEquals(lista.get(1).getElementsByTagName("pont").item(0).getTextContent(), "3");
-        assertEquals(lista.get(2).getElementsByTagName("nev").item(0).getTextContent(), "Asd3");
-        assertEquals(lista.get(2).getElementsByTagName("pont").item(0).getTextContent(), "4");
+        List<Player> lista = manager.readPlayersFromXML(p);
+        assertEquals(lista.get(0).getName(), "Asd");
+        assertEquals(lista.get(0).getPoint(), 5);
+        assertEquals(lista.get(1).getName(), "Asd2");
+        assertEquals(lista.get(1).getPoint(), 3);
+        assertEquals(lista.get(2).getName(), "Asd3");
+        assertEquals(lista.get(2).getPoint(), 4);
     }
 
     @Test
@@ -120,13 +119,13 @@ public class XMLManagerTest {
         manager.addNewPlayerToXML(p, jatekos);
         manager.addNewPlayerToXML(p, jatekos2);
         manager.addNewPlayerToXML(p, jatekos3);
-        List<Element> lista = manager.readPlayersFromXML(p);
-        assertEquals(lista.get(0).getElementsByTagName("pont").item(0).getTextContent(), "5");
-        assertEquals(lista.get(1).getElementsByTagName("pont").item(0).getTextContent(), "3");
-        assertEquals(lista.get(2).getElementsByTagName("pont").item(0).getTextContent(), "4");
+        List<Player> lista = manager.readPlayersFromXML(p);
+        assertEquals(lista.get(0).getPoint(), 5);
+        assertEquals(lista.get(1).getPoint(), 3);
+        assertEquals(lista.get(2).getPoint(), 4);
         lista = manager.sortPlayersByScore(lista);
-        assertEquals(lista.get(0).getElementsByTagName("pont").item(0).getTextContent(), "5");
-        assertEquals(lista.get(1).getElementsByTagName("pont").item(0).getTextContent(), "4");
-        assertEquals(lista.get(2).getElementsByTagName("pont").item(0).getTextContent(), "3");
+        assertEquals(lista.get(0).getPoint(), 5);
+        assertEquals(lista.get(1).getPoint(), 4);
+        assertEquals(lista.get(2).getPoint(), 3);
     }
 }

@@ -59,6 +59,19 @@ public class Player {
     }
 
     /**
+     * Készít egy új játékost a megadott név, pont és játék időpontja alapján.
+     *
+     * @param name a játékos neve
+     * @param point a játékos által elért pontszám
+     * @param date a játék időpontja
+     */
+    public Player(String name, int point, LocalDate date) {
+        this.name = name;
+        this.point = point;
+        this.date = date;
+    }
+
+    /**
      * Visszaadja a játékos nevét.
      *
      * @return a játékos neve

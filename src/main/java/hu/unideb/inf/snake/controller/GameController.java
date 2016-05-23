@@ -78,7 +78,7 @@ public class GameController implements Initializable {
     @FXML
     private CheckBox checkboxWall;
 
-    public static final ObservableList<String> Speeds = FXCollections.observableArrayList("SLOW", "MEDIUM", "FAST", "EXTRA");
+    public static final ObservableList<String> SPEEDS = FXCollections.observableArrayList("SLOW", "MEDIUM", "FAST", "EXTRA");
     private GameEngine engine;
     private SimpleBooleanProperty game;
     private IntegerProperty frameCount;
@@ -226,8 +226,8 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        speedChoice.setItems(Speeds);
-        speedChoice.getSelectionModel().select(Speeds.get(1));
+        speedChoice.setItems(SPEEDS);
+        speedChoice.getSelectionModel().select(SPEEDS.get(1));
         checkboxWall.setSelected(true);
         init();
         engine.stop();

@@ -46,7 +46,7 @@ public interface XMLManagerDao {
      * @param path az xml fájl elérési útvonala
      * @return az xml fájlból kiolvasott játékosok adatait tartalmazó lista
      */
-    public List<Element> readPlayersFromXML(Path path);
+    public List<Player> readPlayersFromXML(Path path);
 
     /**
      * Pontszám alapján csökkenő sorrendbe rendezi a listában szereplő
@@ -55,7 +55,7 @@ public interface XMLManagerDao {
      * @param lista játékosok adatait tartalmazó listta
      * @return játékosokat tartalmazó lista pontszám szerint csökkenő sorrendben
      */
-    public List<Element> sortPlayersByScore(List<Element> lista);
+    public List<Player> sortPlayersByScore(List<Player> lista);
 
     /**
      * Egy új játékost ad a players.xml fájlhoz a paraméterként kapott
@@ -68,8 +68,8 @@ public interface XMLManagerDao {
 
     /**
      * Igazat ad vissza, ha az adott útvonalon lévő XML fájlban szerepelnek az
-     * adott játékos adatai. A figyelembe vett adatok a {@link Player#name} és a
-     * {@link Player#point}.
+     * adott játékos adatai. A figyelembe vett adatok a {@link Player#name}, azaz a játékos neve és a
+     * {@link Player#point}, a játékos pontszáma.
      *
      * @param path az xml fájl elérési útvonala
      * @param jatekos a játékos adatait tartalmazó {@link Player} objektum

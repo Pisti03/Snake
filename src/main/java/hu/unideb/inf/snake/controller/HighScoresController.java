@@ -21,6 +21,7 @@ package hu.unideb.inf.snake.controller;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+import hu.unideb.inf.snake.model.Player;
 import hu.unideb.inf.snake.model.XMLManager;
 import hu.unideb.inf.snake.model.XMLManagerDao;
 import java.io.IOException;
@@ -84,14 +85,14 @@ public class HighScoresController implements Initializable {
                 Files.setAttribute(dir, "dos:hidden", true);
                 manager.createPlayersXML(p);
             }
-            List<Element> asd = manager.readPlayersFromXML(p);
-            asd = manager.sortPlayersByScore(asd);
-            for (int i = 0; i < (asd.size() <= 10 ? asd.size() : 10); i++) {
-                Label seged = new Label(asd.get(i).getElementsByTagName("nev").item(0).getTextContent());
+            List<Player> list = manager.readPlayersFromXML(p);
+            list = manager.sortPlayersByScore(list);
+            for (int i = 0; i < (list.size() <= 10 ? list.size() : 10); i++) {
+                Label seged = new Label(list.get(i).getName());
                 gridPane.add(seged, 1, i + 1);
-                seged = new Label(asd.get(i).getElementsByTagName("pont").item(0).getTextContent());
+                seged = new Label(Integer.toString(list.get(i).getPoint()));
                 gridPane.add(seged, 2, i + 1);
-                seged = new Label(asd.get(i).getElementsByTagName("date").item(0).getTextContent());
+                seged = new Label(list.get(i).getDate().toString());
                 gridPane.add(seged, 3, i + 1);
             }
         } catch (IOException ex) {

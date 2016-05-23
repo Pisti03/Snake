@@ -25,6 +25,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -70,14 +72,14 @@ public class XMLManager implements XMLManagerDao {
     public void createPlayersXML(Path path) {
         try {
             Document doc = builder.newDocument();
-            Element gyoker = doc.createElement("players");
-            doc.appendChild(gyoker);
+            Element root = doc.createElement("players");
+            doc.appendChild(root);
 
             TransformerFactory tFact = TransformerFactory.newInstance();
             Transformer trans = tFact.newTransformer();
-            DOMSource domForras = new DOMSource(doc);
-            StreamResult ujFajl = new StreamResult(path.toFile());
-            trans.transform(domForras, ujFajl);
+            DOMSource domSource = new DOMSource(doc);
+            StreamResult newFile = new StreamResult(path.toFile());
+            trans.transform(domSource, newFile);
         } catch (TransformerException ex) {
             logger.error("TransformerException while creating XML file.");
         }
@@ -87,20 +89,23 @@ public class XMLManager implements XMLManagerDao {
      * {@inheritDoc}
      */
     @Override
-    public List<Element> readPlayersFromXML(Path path) {
+    public List<Player> readPlayersFromXML(Path path) {
         try {
             File file = path.toFile();
             Document doc = builder.parse(file);
-            NodeList nodeLista = doc.getElementsByTagName("player");
-            List<Element> elemek = new ArrayList<>();
-            for (int i = 0; i < nodeLista.getLength(); i++) {
-                elemek.add((Element) nodeLista.item(i));
+            NodeList nodeList = doc.getElementsByTagName("player");
+            List<Player> players = new ArrayList<>();
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element element = (Element) nodeList.item(i);
+                String name = element.getElementsByTagName("nev").item(0).getTextContent();
+                int point = Integer.parseInt(element.getElementsByTagName("pont").item(0).getTextContent());
+                LocalDate date = LocalDate.parse(element.getElementsByTagName("date").item(0).getTextContent(), DateTimeFormatter.ISO_DATE);
+                Player player = new Player(name, point, date);
+                players.add(player);
             }
-            return elemek;
-
+            return players;
         } catch (SAXException ex) {
             logger.error("SAXException");
-
         } catch (IOException ex) {
             logger.error("IOException");
         }
@@ -111,9 +116,8 @@ public class XMLManager implements XMLManagerDao {
      * {@inheritDoc}
      */
     @Override
-    public List<Element> sortPlayersByScore(List<Element> lista) {
-        //java8 required
-        return lista.stream().sorted((t1, t2) -> Integer.parseInt(t2.getElementsByTagName("pont").item(0).getTextContent()) - Integer.parseInt(t1.getElementsByTagName("pont").item(0).getTextContent())).collect(Collectors.toList());
+    public List<Player> sortPlayersByScore(List<Player> lista) {
+        return lista.stream().sorted((t1, t2) -> t2.getPoint()-t1.getPoint()).collect(Collectors.toList());
     }
 
     /**
@@ -145,10 +149,10 @@ public class XMLManager implements XMLManagerDao {
 
             TransformerFactory tFact = TransformerFactory.newInstance();
             Transformer trans = tFact.newTransformer();
-            DOMSource domForras = new DOMSource(doc);
+            DOMSource domSource = new DOMSource(doc);
             FileOutputStream asd = new FileOutputStream(path.toFile());
-            StreamResult ujFajl = new StreamResult(asd);
-            trans.transform(domForras, ujFajl);
+            StreamResult newFile = new StreamResult(asd);
+            trans.transform(domSource, newFile);
 
         } catch (SAXException ex) {
             logger.error("SAXException");
@@ -166,11 +170,10 @@ public class XMLManager implements XMLManagerDao {
      */
     @Override
     public boolean isPlayerInXML(Path path, Player jatekos) {
-        List<Element> lista = new ArrayList<>();
-        lista = readPlayersFromXML(path);
+        List<Player> lista = readPlayersFromXML(path);
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getElementsByTagName("nev").item(0).getTextContent().equals(jatekos.getName())
-                    && lista.get(i).getElementsByTagName("pont").item(0).getTextContent().equals(Integer.toString(jatekos.getPoint()))) {
+            if (lista.get(i).getName().equals(jatekos.getName())
+                    && lista.get(i).getPoint()==jatekos.getPoint()) {
                 return true;
             }
         }

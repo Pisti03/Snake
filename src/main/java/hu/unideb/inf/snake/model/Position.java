@@ -151,6 +151,15 @@ public class Position {
 
     @SuppressWarnings("checkstyle:javadocmethod")
     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 73 * hash + this.x;
+        hash = 73 * hash + this.y;
+        return hash;
+    }
+
+    @SuppressWarnings("checkstyle:javadocmethod")
+    @Override
     public String toString() {
         return "Position{" + "x=" + x + ", y=" + y + '}';
     }

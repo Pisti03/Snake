@@ -40,52 +40,52 @@ import org.slf4j.LoggerFactory;
 public class GameEngine {
 
     private static Logger logger = LoggerFactory.getLogger(GameEngine.class);
-    
+
     /**
      * Az eddig lefutott {@link KeyFrame}-ek száma.
      */
     private IntegerProperty frameCount;
-    
+
     /**
      * A másodpercenként lefutó {@link KeyFrame}-ek száma.
      */
     private int frameRate;
-    
+
     /**
      * A játék ciklus.
      */
     private Timeline gameLoop;
-    
+
     /**
      * Szünetel e épp a játék.
      */
     private boolean paused = true;
-    
+
     /**
      * Egy új {@link Snake}.
      */
     private Snake snake;
-    
+
     /**
      * Fut e még a játék, az értéke <code>igaz</code> ha még fut.
      */
     private SimpleBooleanProperty game;
-    
+
     /**
      * Elért pontszám.
      */
     private int score;
-    
+
     /**
      * Az étel pozíciója.
      */
     private Position food;
-    
+
     /**
      * A Snake játék alapvető funkciót leíró osztály egy példánya.
      */
     private SnakeEngine engine;
-    
+
     /**
      * A fal állapota, be van e kapcsolva.
      */
@@ -106,6 +106,7 @@ public class GameEngine {
      * Készít egy új <code>GameEngine</code>-t, adott <code>frameRate</code>
      * alapján, létrehoz egy {@link Snake}-et {@link Direction#RIGHT}
      * kezdőíránnyal és a <code>list</code> listában található kezdőpozíciókkal.
+     * Az étel pozícióját egy véletlen pozícióra állítja.
      *
      * @param frameRate a másodpercenként lefutó <code>Frame</code>-ek száma
      * @param list a <code>Snake</code> kezdőpozícióit tartalmazó lista

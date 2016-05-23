@@ -15,11 +15,11 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
   
-  You should have received a copy of the GNU General Public
-  License along with this program.  If not, see
-  <http://www.gnu.org/licenses/gpl-3.0.html>.
-  #L%
-  -->
+You should have received a copy of the GNU General Public
+License along with this program.  If not, see
+<http://www.gnu.org/licenses/gpl-3.0.html>.
+#L%
+-->
 <!--  (ERROR, WARN, INFO, DEBUG, TRACE) -->
 
 <configuration debug="true">
@@ -29,17 +29,39 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-        
-    <!--<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>MyLog.log</file>
+    
+    <!-- adott szin feletti fájlba írás -->
+    <!--<appender name="FILE1" class="ch.qos.logback.core.FileAppender">
+        <file>messages.log</file>
+        <append>false</append>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
         <encoder>
-            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
         </encoder>
     </appender>-->
-
+    <!-- csak az adott szint fájlba írása -->
+    <!--<appender name="FILE2" class="ch.qos.logback.core.FileAppender">
+        <file>info.log</file>
+        <append>false</append>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>-->
     <root level="debug">
         <appender-ref ref="STDOUT"/>
-        <!--<appender-ref ref="FILE"/>-->
+        <!--<appender-ref ref="FILE"/>
+        <appender-ref ref="FILE2"/>-->
     </root>
 
 </configuration>

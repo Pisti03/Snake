@@ -128,6 +128,7 @@ public class SnakeEngine {
      * @return egy a pályára visszahelyezett pozíció
      */
     public Position backToMap(Position head) {
+        logger.trace("Position has been set back to map.");
         Position newhead = new Position(head);
         if (head.getX() > 29) {
             newhead.setX(0);
@@ -196,6 +197,7 @@ public class SnakeEngine {
      * @return a megnövelt méretű Snake pozícióit tartalmazó lista
      */
     public List<Position> grow(List<Position> snake, Position newlast) {
+        logger.info("Snake grown.");
         List<Position> newsnake = new ArrayList<>(snake);
         newsnake.add(newlast);
         return newsnake;
