@@ -127,12 +127,12 @@ public class XMLManager implements XMLManagerDao {
     public void addNewPlayerToXML(Path path, Player jatekos) {
         try {
             Document doc;
-            Element gyoker;
+            Element root;
 
             File file = path.toFile();
 
             doc = builder.parse(file);
-            gyoker = doc.getDocumentElement();
+            root = doc.getDocumentElement();
 
             Element player = doc.createElement("player");
             Element pont = doc.createElement("pont");
@@ -145,7 +145,7 @@ public class XMLManager implements XMLManagerDao {
             player.appendChild(nev);
             player.appendChild(pont);
             player.appendChild(date);
-            gyoker.appendChild(player);
+            root.appendChild(player);
 
             TransformerFactory tFact = TransformerFactory.newInstance();
             Transformer trans = tFact.newTransformer();
@@ -169,11 +169,11 @@ public class XMLManager implements XMLManagerDao {
      * {@inheritDoc}
      */
     @Override
-    public boolean isPlayerInXML(Path path, Player jatekos) {
+    public boolean isPlayerInXML(Path path, Player player) {
         List<Player> lista = readPlayersFromXML(path);
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getName().equals(jatekos.getName())
-                    && lista.get(i).getPoint() == jatekos.getPoint()) {
+            if (lista.get(i).getName().equals(player.getName())
+                    && lista.get(i).getPoint() == player.getPoint()) {
                 return true;
             }
         }

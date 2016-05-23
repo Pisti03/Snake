@@ -25,7 +25,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * Az XMLManager DAO interfész, az XML fájlon végezhető műveleteket definiálja.
+ * Az XML fájlon végezhető műveleteket definiáló interfész.
  *
  * @author Kokas István
  */
@@ -48,8 +48,8 @@ public interface XMLManagerDao {
     public List<Player> readPlayersFromXML(Path path);
 
     /**
-     * Pontszám alapján csökkenő sorrendbe rendezi a listában szereplő
-     * játékosokat.
+     * Pontszám alapján csökkenő sorrendbe rendezi a paraméterként kapott
+     * listában szereplő játékosokat.
      *
      * @param lista játékosok adatait tartalmazó listta
      * @return játékosokat tartalmazó lista pontszám szerint csökkenő sorrendben
@@ -71,9 +71,9 @@ public interface XMLManagerDao {
      * azaz a játékos neve és a {@link Player#point}, a játékos pontszáma.
      *
      * @param path az xml fájl elérési útvonala
-     * @param jatekos a játékos adatait tartalmazó {@link Player} objektum
+     * @param player a játékos adatait tartalmazó {@link Player} objektum
      * @return <code>igaz</code>, ha a játékos adatai szerepelnek az XML
      * fájlban, egyébként <code>hamis</code>
      */
-    public boolean isPlayerInXML(Path path, Player jatekos);
+    public boolean isPlayerInXML(Path path, Player player);
 }

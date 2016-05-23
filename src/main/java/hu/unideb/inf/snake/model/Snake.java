@@ -33,25 +33,26 @@ import org.slf4j.LoggerFactory;
 public class Snake {
 
     private static final Logger logger = LoggerFactory.getLogger(Snake.class);
-    
+
     /**
-     * A Snake jelenlegi iránya.
+     * A Snake jelenlegi haladási iránya.
      */
     private Direction direction;
-    
+
     /**
      * A Snake iránya amerre a következő lépésnél fordulni fog.
      */
     private Direction nextDirection;
-    
+
     /**
      * A Snake celláinak pozícióit tartalmazó lista.
      */
     private List<Position> body;
 
     /**
-     * Készít egy új {@link Snake} objektumok a megadott irány (<code>direction</code>) és a cellák
-     * pozícióit tartalmazó lista (<code>body</code>) alapján.
+     * Készít egy új {@link Snake} objektumok a megadott irány
+     * (<code>direction</code>) és a cellák pozícióit tartalmazó lista
+     * (<code>body</code>) alapján.
      *
      * @param direction az első lépés iránya amerre a Snake lépni fog
      * @param body a Snake kezdeti celláinak pozícióit tartalmazó lista
@@ -107,7 +108,8 @@ public class Snake {
 
     /**
      * Beállítja a következő lépés irányát. A jelenlegi iránnyal ellentétes
-     * irány nem állítható be.
+     * irány nem állítható be. Ha a kapott irány a jelenlegi iránnyal
+     * ellentétes, akkor a következő lépés iránya nem változik.
      *
      * @param direction a következő lépés iránya
      */
@@ -122,7 +124,7 @@ public class Snake {
         } else if (direction != Direction.DOWN && this.direction == Direction.UP) {
             this.nextDirection = direction;
         }
-        
+
     }
-    
+
 }

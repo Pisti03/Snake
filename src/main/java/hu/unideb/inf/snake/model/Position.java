@@ -43,7 +43,7 @@ public class Position {
     /**
      * Visszaadja az x koordinátát.
      *
-     * @return az objektum x koordinátája
+     * @return a pozíció x koordinátája
      */
     public int getX() {
         return x;
@@ -59,18 +59,18 @@ public class Position {
     }
 
     /**
-     * Beállítja az objektum x koordinátáját.
+     * Beállítja a pozíció x koordinátáját.
      *
-     * @param x az objektum x koordinátája
+     * @param x a pozíció x koordinátája
      */
     public void setX(int x) {
         this.x = x;
     }
 
     /**
-     * Beállítja az objektum y koordinátáját.
+     * Beállítja a pozíció y koordinátáját.
      *
-     * @param y az objektum y koordinátája
+     * @param y a pozíció y koordinátája
      */
     public void setY(int y) {
         this.y = y;
@@ -96,7 +96,9 @@ public class Position {
     }
 
     /**
-     * Készít egy pozíciót egy másik pozíció koordinátái alapján.
+     * Készít egy pozíciót egy másik pozíció koordinátái alapján. Az új pozíció
+     * x és y koordinátája a paraméterként kapott pozíció x és y koordinátájával
+     * lesz egyenlő.
      *
      * @param a egy másik pozíció
      */
@@ -107,6 +109,7 @@ public class Position {
 
     /**
      * Egy másik pozíció alapján beállítja ennek a pozíciónak a koordinátáit.
+     * Átveszi az másik pozíció x és y koordinátáját.
      *
      * @param a egy másik pozíció
      */
@@ -116,7 +119,8 @@ public class Position {
     }
 
     /**
-     * A pozíció x és y koordinátáit egy véletlenszerű értékre állítja.
+     * A pozíció x és y koordinátáit egy véletlenszerű értékre állítja adott
+     * alsó és felső határ alapján.
      *
      * @param min a véletlenszám alsó határa
      * @param max a véletlenszám felső határa

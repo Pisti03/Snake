@@ -45,7 +45,9 @@ public class SnakeEngine {
      * a Snake kilép a pályáról, amit az <code>isOutOfMap</code> metódussal
      * ellenőríz akkor a Snake fejét a <code>backToMap</code> metódussal
      * visszahelyezi a pálya ellentétes oldalára. A visszaadott lista, a lépés
-     * utáni új pozíciókat tartalmazza.
+     * utáni új pozíciókat tartalmazza, ha a játéknak nem lett vége. Ha a
+     * játéknak vége lett, akkor a visszaadott lista megegyezik a paraméterként
+     * kapott pozíciókat tartalmazó listával.
      *
      * @param snake a Snake celláinak léptetés előtti pozícióit tartalmazó lista
      * @param direction a lépés iránya
@@ -59,10 +61,11 @@ public class SnakeEngine {
         Boolean nott = false;
         Position nextHead = getNextPosition(snake.get(0), direction);
         if (isOutOfMap(nextHead)) {
-            nextHead = backToMap(nextHead);
             logger.debug("nextHead= " + nextHead);
+            nextHead = backToMap(nextHead);
         }
         if (isInList(snake, nextHead) || (wall && isNextWall(snake.get(0), direction))) {
+            logger.trace("Collision");
             game.set(false);
         }
         if (game.getValue()) {
@@ -109,11 +112,10 @@ public class SnakeEngine {
     }
 
     /**
-     * Igazat ad vissza, ha az adott pozíció a pályán kívűlre esik.
+     * Igazat ad vissza, ha az adott pozíció a pályán kívülre esik.
      *
-     * @param pos egy pozíció amelyet ellenőrízni szeretnénk, hogy a pályán
-     * belülre esik e
-     * @return <code>igaz</code>, ha a pozíció a pályán kívűlre esik, egyébként
+     * @param pos egy pozíció amelyet ellenőríz, hogy a pályán kívülre esik e
+     * @return <code>igaz</code>, ha a pozíció a pályán kívülre esik, egyébként
      * <code>hamis</code>
      */
     public Boolean isOutOfMap(Position pos) {
@@ -160,7 +162,7 @@ public class SnakeEngine {
      * Igazat ad vissza, ha a paraméterként kapott pozíció <code>next</code>
      * benne van a <code>snake</code> listában.
      *
-     * @param snake a lista amiben a pozíciót keressük
+     * @param snake a lista amelyben a pozíciót keressük
      * @param next a pozíció amit a listában keresünk
      * @return <code>igaz</code>, ha a pozíció benne van a listában, egyébként
      * <code>hamis</code>
@@ -190,7 +192,8 @@ public class SnakeEngine {
 
     /**
      * A Snake méretét megnöveli egyel. A paraméterként kapott
-     * <code>newlast</code> pozíciót hozzáadja a <code>snake</code> listához.
+     * <code>newlast</code> pozíciót hozzáadja a <code>snake</code> listához, ez
+     * lesz a Snake új végpontja.
      *
      * @param snake a Snake celláinak pozícióit tartalmazó lista.
      * @param newlast a Snake új utolsó cellájának pozíciója

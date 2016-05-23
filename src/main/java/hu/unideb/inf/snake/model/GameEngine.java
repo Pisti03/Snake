@@ -82,9 +82,9 @@ public class GameEngine {
     private Position food;
 
     /**
-     * A Snake játék alapvető funkciót leíró osztály egy példánya.
+     * A Snake játék alapvető funkciót tartalmazó osztály egy példánya.
      */
-    private SnakeEngine engine;
+    private static SnakeEngine engine = new SnakeEngine();
 
     /**
      * A fal állapota, <code>igaz</code>,ha be van kapcsolva, <code>hamis</code>
@@ -120,7 +120,6 @@ public class GameEngine {
         this.snake = new Snake(Direction.RIGHT, list);
         this.game = game;
         this.score = 0;
-        this.engine = new SnakeEngine();
         this.food = new Position();
         this.frameCount = frameCount;
         food.randomize(0, 29);
@@ -212,6 +211,7 @@ public class GameEngine {
      */
     public void changefps(int fps) {
         this.frameRate = fps;
+        logger.trace("New fps: " + fps);
         gameLoop.stop();
         gameLoop = creategameLoop();
         if (!paused) {
@@ -222,8 +222,8 @@ public class GameEngine {
     /**
      * Létrehozza a játékciklust. A másodpercenként lefutó <code>Frame</code>-ek
      * számát a <code>frameRate</code> határozza meg és minden
-     * <code>Frame</code> végrehajtásakor meghívja a {@link #run()} metódust. A
-     * játék leállításig fog futni.
+     * <code>Frame</code> végrehajtásakor meghívja a {@link #run()} metódust. Az
+     * ismétlés a visszaadott {@link Timeline} leállításig fog futni.
      *
      * @return a játékciklus
      */

@@ -79,7 +79,7 @@ public class HighScoresController implements Initializable {
         try {
             Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
             if (!p.toFile().isFile()) {
-                logger.info("The players.xml file does not exist.");
+                logger.debug("The players.xml file does not exist.");
                 Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
                 dir.toFile().mkdirs();
                 Files.setAttribute(dir, "dos:hidden", true);
