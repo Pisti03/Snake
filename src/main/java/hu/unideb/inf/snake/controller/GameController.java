@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -77,6 +78,8 @@ public class GameController implements Initializable {
     private ChoiceBox speedChoice;
     @FXML
     private CheckBox checkboxWall;
+    @FXML
+    private Button buttonExit;
 
     public static final ObservableList<String> SPEEDS = FXCollections.observableArrayList("SLOW", "MEDIUM", "FAST", "EXTRA");
     private GameEngine engine;
@@ -130,6 +133,11 @@ public class GameController implements Initializable {
         } catch (IOException e) {
             logger.error("IOException, couldn't load fxml.");
         }
+    }
+
+    @FXML
+    private void handleButtonExit(ActionEvent event) {
+        Platform.exit();
     }
 
     @FXML
