@@ -9,6 +9,10 @@
 
     <name>Snake</name>
     <description>A simple Snake game in JavaFX.</description>
+    <inceptionYear>2016</inceptionYear>
+    <organization>
+        <name>University of Debrecen, Faculty of Informatics</name>
+    </organization>
     <developers>
         <developer>
             <name>Kokas István</name>
@@ -18,18 +22,8 @@
             </roles>
         </developer>
     </developers>
-    <inceptionYear>2016</inceptionYear>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>hu.unideb.inf.snake.MainApp</mainClass>
-        <logback.version>1.1.7</logback.version>
-    </properties>
-
-    <organization>
-        <name>University of Debrecen, Faculty of Informatics</name>
-    </organization>
     <scm>
+        <connection>scm:git:git://github.com/Pisti03/Snake.git</connection>
         <url>https://github.com/Pisti03/Snake</url>
     </scm>
     <licenses>
@@ -38,7 +32,11 @@
             <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
         </license>
     </licenses>
-
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mainClass>hu.unideb.inf.snake.MainApp</mainClass>
+        <logback.version>1.1.7</logback.version>
+    </properties>
     <build>
         <plugins>            
             <plugin>
