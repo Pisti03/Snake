@@ -22,8 +22,7 @@ package hu.unideb.inf.snake.controller;
  * #L%
  */
 import hu.unideb.inf.snake.model.Player;
-import hu.unideb.inf.snake.model.XMLManager;
-import hu.unideb.inf.snake.model.XMLManagerDao;
+import hu.unideb.inf.snake.model.XMLHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -42,6 +41,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import hu.unideb.inf.snake.model.XMLHandlerDao;
 
 /**
  *
@@ -62,7 +62,7 @@ public class NewScoreController implements Initializable {
     @FXML
     private Label labelRequired;
     
-    private final XMLManagerDao manager = new XMLManager();
+    private final XMLHandlerDao handler = new XMLHandler();
     private int score = 0;
     
     @FXML
@@ -78,14 +78,14 @@ public class NewScoreController implements Initializable {
             } catch (IOException e) {
                 logger.error("IOException, couldn't set directory attribute: hidden.");
             }
-            manager.createPlayersXML(p);
+            handler.createPlayersXML(p);
         }
         
         if (!nameField.getText().isEmpty()) {
             logger.info("Player saved score.");
             Player player = new Player(nameField.getText(), score);
-            if (!manager.isPlayerInXML(p, player)) {
-                manager.addNewPlayerToXML(p, player);
+            if (!handler.isPlayerInXML(p, player)) {
+                handler.addNewPlayerToXML(p, player);
             }
             Stage stage = (Stage) buttonYes.getScene().getWindow();
             stage.close();

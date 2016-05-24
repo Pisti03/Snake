@@ -50,9 +50,9 @@ import org.xml.sax.SAXException;
  *
  * @author Kokas István
  */
-public class XMLManager implements XMLManagerDao {
+public class XMLHandler implements XMLHandlerDao {
 
-    private static Logger logger = LoggerFactory.getLogger(XMLManager.class);
+    private static Logger logger = LoggerFactory.getLogger(XMLHandler.class);
     private static DocumentBuilderFactory factory;
     private static DocumentBuilder builder;
 

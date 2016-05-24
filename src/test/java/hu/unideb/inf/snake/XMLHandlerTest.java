@@ -22,8 +22,7 @@ package hu.unideb.inf.snake;
  * #L%
  */
 import hu.unideb.inf.snake.model.Player;
-import hu.unideb.inf.snake.model.XMLManager;
-import hu.unideb.inf.snake.model.XMLManagerDao;
+import hu.unideb.inf.snake.model.XMLHandler;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,72 +33,73 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
+import hu.unideb.inf.snake.model.XMLHandlerDao;
 
 /**
  *
  * @author Kokas István
  */
-public class XMLManagerTest {
+public class XMLHandlerTest {
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
-    private static XMLManagerDao manager;
+    private static XMLHandlerDao handler;
 
     @BeforeClass
     public static void setUpClass() {
-        manager = new XMLManager();
+        handler = new XMLHandler();
     }
 
     @AfterClass
     public static void tearDownClass() {
-        manager = null;
+        handler = null;
     }
 
     @Test
     public void testCreatePlayersXML() throws IOException {
         Path p = Paths.get(tempFolder.getRoot().getPath(), "players.xml");
-        manager.createPlayersXML(p);
+        handler.createPlayersXML(p);
         assertTrue(p.toFile().isFile());
     }
 
     @Test
     public void testIsPlayerInXML() {
         Path p = Paths.get(tempFolder.getRoot().getPath(), "players.xml");
-        manager.createPlayersXML(p);
+        handler.createPlayersXML(p);
         Player jatekos = new Player("Asd", 5);
-        manager.addNewPlayerToXML(p, jatekos);
+        handler.addNewPlayerToXML(p, jatekos);
         Player jatekos2 = new Player("Asd2", 3);
-        assertTrue(manager.isPlayerInXML(p, jatekos));
-        assertFalse(manager.isPlayerInXML(p, jatekos2));
+        assertTrue(handler.isPlayerInXML(p, jatekos));
+        assertFalse(handler.isPlayerInXML(p, jatekos2));
     }
 
     @Test
     public void testAddNewPlayerToXML() {
         Path p = Paths.get(tempFolder.getRoot().getPath(), "players.xml");
-        manager.createPlayersXML(p);
+        handler.createPlayersXML(p);
         Player jatekos = new Player("Asd", 5);
         Player jatekos2 = new Player("Asd2", 3);
         Player jatekos3 = new Player("Asd3", 4);
-        manager.addNewPlayerToXML(p, jatekos);
-        manager.addNewPlayerToXML(p, jatekos2);
-        manager.addNewPlayerToXML(p, jatekos3);
-        assertTrue(manager.isPlayerInXML(p, jatekos));
-        assertTrue(manager.isPlayerInXML(p, jatekos2));
-        assertTrue(manager.isPlayerInXML(p, jatekos2));
+        handler.addNewPlayerToXML(p, jatekos);
+        handler.addNewPlayerToXML(p, jatekos2);
+        handler.addNewPlayerToXML(p, jatekos3);
+        assertTrue(handler.isPlayerInXML(p, jatekos));
+        assertTrue(handler.isPlayerInXML(p, jatekos2));
+        assertTrue(handler.isPlayerInXML(p, jatekos2));
 
     }
 
     @Test
     public void testReadPlayersFromXML() {
         Path p = Paths.get(tempFolder.getRoot().getPath(), "players.xml");
-        manager.createPlayersXML(p);
+        handler.createPlayersXML(p);
         Player jatekos = new Player("Asd", 5);
         Player jatekos2 = new Player("Asd2", 3);
         Player jatekos3 = new Player("Asd3", 4);
-        manager.addNewPlayerToXML(p, jatekos);
-        manager.addNewPlayerToXML(p, jatekos2);
-        manager.addNewPlayerToXML(p, jatekos3);
-        List<Player> lista = manager.readPlayersFromXML(p);
+        handler.addNewPlayerToXML(p, jatekos);
+        handler.addNewPlayerToXML(p, jatekos2);
+        handler.addNewPlayerToXML(p, jatekos3);
+        List<Player> lista = handler.readPlayersFromXML(p);
         assertEquals(lista.get(0).getName(), "Asd");
         assertEquals(lista.get(0).getPoint(), 5);
         assertEquals(lista.get(1).getName(), "Asd2");
@@ -111,18 +111,18 @@ public class XMLManagerTest {
     @Test
     public void testSortPlayersByScore() {
         Path p = Paths.get(tempFolder.getRoot().getPath(), "players.xml");
-        manager.createPlayersXML(p);
+        handler.createPlayersXML(p);
         Player jatekos = new Player("Asd", 5);
         Player jatekos2 = new Player("Asd2", 3);
         Player jatekos3 = new Player("Asd3", 4);
-        manager.addNewPlayerToXML(p, jatekos);
-        manager.addNewPlayerToXML(p, jatekos2);
-        manager.addNewPlayerToXML(p, jatekos3);
-        List<Player> lista = manager.readPlayersFromXML(p);
+        handler.addNewPlayerToXML(p, jatekos);
+        handler.addNewPlayerToXML(p, jatekos2);
+        handler.addNewPlayerToXML(p, jatekos3);
+        List<Player> lista = handler.readPlayersFromXML(p);
         assertEquals(lista.get(0).getPoint(), 5);
         assertEquals(lista.get(1).getPoint(), 3);
         assertEquals(lista.get(2).getPoint(), 4);
-        lista = manager.sortPlayersByScore(lista);
+        lista = handler.sortPlayersByScore(lista);
         assertEquals(lista.get(0).getPoint(), 5);
         assertEquals(lista.get(1).getPoint(), 4);
         assertEquals(lista.get(2).getPoint(), 3);

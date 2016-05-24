@@ -22,8 +22,7 @@ package hu.unideb.inf.snake.controller;
  * #L%
  */
 import hu.unideb.inf.snake.model.Player;
-import hu.unideb.inf.snake.model.XMLManager;
-import hu.unideb.inf.snake.model.XMLManagerDao;
+import hu.unideb.inf.snake.model.XMLHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -43,6 +42,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import hu.unideb.inf.snake.model.XMLHandlerDao;
 
 /**
  * @author Kokas István
@@ -54,7 +54,7 @@ public class HighScoresController implements Initializable {
     private Button buttonMenu;
     @FXML
     private GridPane gridPane;
-    private final XMLManagerDao manager = new XMLManager();
+    private final XMLHandlerDao handler = new XMLHandler();
 
     @FXML
     private void Menu(ActionEvent event) {
@@ -83,10 +83,10 @@ public class HighScoresController implements Initializable {
                 Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
                 dir.toFile().mkdirs();
                 Files.setAttribute(dir, "dos:hidden", true);
-                manager.createPlayersXML(p);
+                handler.createPlayersXML(p);
             }
-            List<Player> list = manager.readPlayersFromXML(p);
-            list = manager.sortPlayersByScore(list);
+            List<Player> list = handler.readPlayersFromXML(p);
+            list = handler.sortPlayersByScore(list);
             for (int i = 0; i < (list.size() <= 10 ? list.size() : 10); i++) {
                 Label seged = new Label(list.get(i).getName());
                 gridPane.add(seged, 1, i + 1);

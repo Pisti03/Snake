@@ -29,7 +29,7 @@ import java.util.List;
  *
  * @author Kokas István
  */
-public interface XMLManagerDao {
+public interface XMLHandlerDao {
 
     /**
      * Létrehozza a megadott elérési útvonalon a players.xml fájlt a players
