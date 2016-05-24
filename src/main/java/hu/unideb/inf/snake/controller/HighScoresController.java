@@ -55,7 +55,7 @@ public class HighScoresController implements Initializable {
     @FXML
     private GridPane gridPane;
     private final XMLHandlerDao handler = new XMLHandler();
-
+    private static Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
     @FXML
     private void Menu(ActionEvent event) {
         try {
@@ -74,10 +74,22 @@ public class HighScoresController implements Initializable {
         }
     }
 
+    private void updateGridPane() {
+        List<Player> list = handler.readPlayersFromXML(p);
+        list = handler.sortPlayersByScore(list);
+        for (int i = 0; i < (list.size() <= 10 ? list.size() : 10); i++) {
+            Label seged = new Label(list.get(i).getName());
+            gridPane.add(seged, 1, i + 1);
+            seged = new Label(Integer.toString(list.get(i).getPoint()));
+            gridPane.add(seged, 2, i + 1);
+            seged = new Label(list.get(i).getDate().toString());
+            gridPane.add(seged, 3, i + 1);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
             if (!p.toFile().isFile()) {
                 logger.debug("The players.xml file does not exist.");
                 Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
@@ -85,18 +97,9 @@ public class HighScoresController implements Initializable {
                 Files.setAttribute(dir, "dos:hidden", true);
                 handler.createPlayersXML(p);
             }
-            List<Player> list = handler.readPlayersFromXML(p);
-            list = handler.sortPlayersByScore(list);
-            for (int i = 0; i < (list.size() <= 10 ? list.size() : 10); i++) {
-                Label seged = new Label(list.get(i).getName());
-                gridPane.add(seged, 1, i + 1);
-                seged = new Label(Integer.toString(list.get(i).getPoint()));
-                gridPane.add(seged, 2, i + 1);
-                seged = new Label(list.get(i).getDate().toString());
-                gridPane.add(seged, 3, i + 1);
-            }
         } catch (IOException ex) {
             logger.error("IOException, couldn't set directory attribute: hidden.");
         }
+        updateGridPane();
     }
 }

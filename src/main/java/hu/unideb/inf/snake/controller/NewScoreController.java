@@ -63,12 +63,12 @@ public class NewScoreController implements Initializable {
     private Label labelRequired;
     
     private final XMLHandlerDao handler = new XMLHandler();
+    private static Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
     private int score = 0;
     
     @FXML
     private void Yes(ActionEvent event) {
         labelRequired.setText("");
-        Path p = Paths.get(System.getProperty("user.home"), "Documents", ".Snake", "players.xml");
         if (!p.toFile().isFile()) {
             logger.debug("The players.xml file does not exist.");
             Path dir = Paths.get(System.getProperty("user.home"), "Documents", ".Snake");
