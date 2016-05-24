@@ -32,7 +32,8 @@ import java.util.List;
 public interface XMLManagerDao {
 
     /**
-     * Létrehozza a megadott elérési útvonalon a players.xml fájlt.
+     * Létrehozza a megadott elérési útvonalon a players.xml fájlt a players
+     * gyökér elemmel.
      *
      * @param path az elérési útvonal
      */
