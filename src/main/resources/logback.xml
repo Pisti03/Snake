@@ -30,7 +30,6 @@ License along with this program.  If not, see
         </encoder>
     </appender>
     
-    <!-- adott szin feletti fájlba írás -->
     <!--<appender name="FILE1" class="ch.qos.logback.core.FileAppender">
         <file>messages.log</file>
         <append>false</append>
@@ -43,7 +42,6 @@ License along with this program.  If not, see
             </pattern>
         </encoder>
     </appender>-->
-    <!-- csak az adott szint fájlba írása -->
     <!--<appender name="FILE2" class="ch.qos.logback.core.FileAppender">
         <file>info.log</file>
         <append>false</append>

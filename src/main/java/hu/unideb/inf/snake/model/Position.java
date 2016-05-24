@@ -109,7 +109,7 @@ public class Position {
 
     /**
      * Egy másik pozíció alapján beállítja ennek a pozíciónak a koordinátáit.
-     * Átveszi az másik pozíció x és y koordinátáját.
+     * Átveszi az másik pozíció x és y koordinátájának értékét.
      *
      * @param a egy másik pozíció
      */

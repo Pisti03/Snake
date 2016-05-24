@@ -41,7 +41,7 @@ public interface XMLHandlerDao {
 
     /**
      * Visszaad egy az xml fájlból kiolvasott játékosok adatait tartalmazó
-     * listát.
+     * listát. A lista elemei {@link Player} objektumok.
      *
      * @param path az xml fájl elérési útvonala
      * @return az xml fájlból kiolvasott játékosok adatait tartalmazó lista
